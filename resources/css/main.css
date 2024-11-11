@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import url("global.css");
+
+* {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dark-green: #01400B;
+    --cor-primaria: #0D731D;
+    --cor-primaria-hover: #01400B;
+}
+
+.topo {
+    background-color: var(--cor-primaria);
+}
+
+.topo__conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 23px 57px;
+}
+
+.topo__imagem {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+
+.topo__barra-busca {
+    position: relative;
+}
+
+.topo__barra-busca i {
+    position: absolute;
+    top: 25%;
+    right: 8px;
+}
+
+.topo__barra-busca input {
+    padding: 6px 24px;
+    border-radius: 15px;
+}
+
+.navegacao ul {
+    margin-bottom: 0;
+    padding: 11px 0;
+    background-color: var(--cor-primaria-hover);
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    display: flex;
+}
+
+.navegacao__login{
+    position: absolute;
+    right: 166px;
+  }
+
+.navegacao a {
+    text-decoration: none;
+    color: white;
+}
+
+.navegacao {
+    position: relative;
+}
+
+.glide__slide img {
+    width: 100%;
+}
+
+.main-artigos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-artigos__text {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.cards-area {
+    gap: 16px;
+    max-width: 1490px;
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas: 
+        "A B"
+        "A C";
+}
+
+.texto-card {
+    padding: 20px;
+}
+
+.card-1 {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 100%;
+    grid-area: A;
+}
+
+.card-2, .card-3 {
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 100%;
+}
+
+.main-cartao__body-image__2 {
+    border-radius: 5px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-cartao__body-image {
+    border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .topo__conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .topo__barra-busca {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navegacao ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .cards-area {
+        grid-template-areas: 
+            "A"
+            "B"
+            "C";
+    }
+
+    .card-1, .card-2, .card-3 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .topo__conteudo {
+        padding: 10px;
+    }
+
+    .navegacao ul {
+        gap: 5px;
+    }
+}
+
+.ver-mais {
+    color: black;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divisor {
+    display: block;
+    justify-content: center;
+    width: 86vw;
+    margin: 36px auto;
+    height: 4px;
+    border-bottom: 8px solid black;
+    border-radius: 5px;
+}
+
+
+.cards-carrosel {
+    justify-content:space-around;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    border: 1px solid black;
+    width: 337px;
+    height: 100%;
+}
+
+.image-card-carrosel {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.card-carrosel {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.texto-cards {
+    padding: 1rem;
+  }
+
+footer {
+    background-color: var(--dark-green);
+  }
+  
+  .article {
+    margin-top: 10.0rem;
+  }
+  
+  .custom-link {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .custom-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -.3rem;
+    width: 100%;
+    height: .3rem;
+    background-color: #28a745;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .custom-link:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .pe-3 {
+      padding-right: 1rem; /* Ajuste este valor conforme necessário para o espaçamento desejado */
+    }
+
+    @media (max-width: 1200px) {
+        .card-carrosel {
+          /* Estilo para telas menores que 1200px */
+          margin: 0 auto; /* Centraliza os cards */
+        }
+      }
+      
+      @media (max-width: 900px) {
+        .card-carrosel {
+          /* Estilo para telas menores que 900px */
+          padding: 0.5rem; /* Reduz o padding */
+        }
+        .texto-card h4 {
+          font-size: 1.2rem; /* Diminui o tamanho do título */
+        }
+      }
+      
+      @media (max-width: 600px) {
+        .splide__slide {
+          /* Estilo para telas menores que 600px */
+          margin: 0.5rem 0; /* Adiciona margens verticais */
+        }
+        .card-carrosel {
+          /* Ajusta a altura ou largura se necessário */
+          width: 100%; /* Garante que o card ocupe toda a largura */
+        }
+        .texto-card p {
+          font-size: 0.9rem; /* Diminui o tamanho da fonte */
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .texto-card {
+          /* Ajusta o estilo para dispositivos muito pequenos */
+          padding: 0.5rem; /* Reduz ainda mais o padding */
+        }
+      }
+      

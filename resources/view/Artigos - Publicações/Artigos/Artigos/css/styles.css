@@ -1,0 +1,391 @@
+@import url(../../../css/global.css);
+
+header {
+  background-image: linear-gradient(#0d731c, #075913);
+  height: 12.9rem;
+}
+
+.title {
+  font-size: 3.5rem;
+}
+
+.nav__links, footer {
+  background-color: var(--dark-green);
+}
+
+.custom-link {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+.pe-4 {
+  margin-right: 100px; /* Move 50px para a esquerda */
+}
+
+.custom-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -.3rem;
+  width: 100%;
+  height: .3rem;
+  background-color: #28a745;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.custom-link:hover::after {
+  transform: scaleX(1);
+}
+
+body {
+  margin: 0;
+}
+
+/* Titulo da pagina */
+.repo {
+  position: absolute;
+  left: 125px;
+  margin-top: 30px;
+}
+
+/* barra de Pesquisa com botão de pesquisa verde */
+.container-wrapper {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #075913;
+  padding: 12.4px;
+  border-radius: 8px;
+  height: 54px;
+  border: 1px solid #0a0a0a;
+  margin: 0 auto; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 650px;
+  margin-left:20%; /* Garante que não haja margem à direita */
+  margin-right: auto; /* Empurra o botão para a direita */
+  transition: background-color 0.3s; /* Adiciona transição para suavidade */
+}
+
+.container:hover {
+  background-color: #075913cb;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 100%;
+  border: 1px solid #0a0a0a;
+  padding: 9px 12px;
+  margin-right: -13px;
+}
+
+.input-wrapper input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.input-wrapper input:focus-visible {
+  outline: none;
+}
+
+.container i {
+  color: rgb(255, 255, 255);
+  margin-right: 15px;
+  top: 25%;
+  transform: translateY(12%);
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Botão de Filtro */
+.filter-btn {
+  padding: 5px 15px;
+  border-radius: 10px;
+  background: none; /* Remove o fundo */
+  cursor: pointer;
+  display: flex;
+  justify-content: center; /* Centraliza a palavra */
+  margin-left: auto; /* Empurra o botão para a direita */
+  margin-right: 7%; /* Garante que não haja margem à direita */
+  margin-top: -280px;
+  border: 1px solid gray; /* Adiciona a borda */
+  transition: background-color 0.3s; /* Adiciona transição para suavidade */
+}
+
+.filter-btn:hover {
+  background-color: #838282;
+}
+
+/* Titulo do Segmento Artigos */
+.title-artigos{
+  margin-top: 100px;
+  margin-left: 120px;
+}
+
+/* Container de todos os segmentos, Exceto o segmento Outros */
+.article-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.article-box {
+  width: 350px;
+  text-align: center;
+  border: 1px solid #000000;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  margin: 10px;
+  height: 500px
+}
+
+.image-placeholder {
+  width: 100%;
+  background-color: #ddd;
+  margin-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+}
+
+.article-container2 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+/* Titulo do Segmento Jogos */
+.title-jogos{
+  margin-top: 200px;
+  margin-left: 120px;
+}
+
+/* Titulo do Segmento Modelagens */
+.title-model{
+  margin-top: 200px;
+  margin-left: 120px;
+}
+
+/* Titulo do Segmento Eventos */
+.title-eventos {
+  margin-top: 200px;
+  margin-left: 120px;
+}
+
+.title-cards-art {
+  margin: 0;
+  padding: 0;
+  margin-top: -70px;
+}
+
+.link-vermais {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  list-style-type: none; /* Remove os marcadores de lista */
+  margin-top: 50px;
+}
+
+
+.title-outros {
+  margin-top: 200px;
+  margin-left: 120px;
+}
+
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rem;
+  padding: 2rem;
+  margin-top: 20px;
+  height: 100%;
+}
+
+.outro {
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 600px;
+  height: auto; /* Alterado para permitir a expansão da altura */
+}
+
+.outro img {
+  width: 100%;
+  height: auto;
+}
+
+.outer-info {
+  padding: 1rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.outer-info h4 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.outer-info p {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+}
+
+
+.vermais {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  list-style-type: none; /* Remove os marcadores de lista */
+  margin-top: -170px;
+  }
+
+/* Estilo adicional para o espaçamento entre o evento e o rodapé */
+.outer-container {
+  margin-bottom: 250px;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+
+
+  .article-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .article-box {
+    width: 90%;
+  }
+
+  .outer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .outro {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+/* Telas pequenas (≥576px) */
+@media (max-width: 576px) {
+  .container {
+      max-width: 90%;
+  }
+
+  .container i {
+      right: 10px;
+  }
+
+  .filter-btn {
+    margin-top: 20px; /* Ajusta o espaçamento superior */
+    width: auto;
+    margin-left: auto;
+    margin-right: 10px; /* Adiciona margem à direita */
+}
+
+.repo {
+  left: 10px; /* Ajusta a margem esquerda */
+  margin-top: 30px; /* Ajusta o espaçamento superior */
+  }
+}
+
+/* Telas médias (≥768px) */
+@media (max-width: 768px) {
+  .container {
+      max-width: 85%;
+  }
+
+  .container i {
+      right: 10px;
+  }
+  
+  .filter-btn {
+    margin-top: 15px; /* Ajusta o espaçamento superior */
+    width: auto;
+    margin-left: auto;
+    margin-right: 15px; 
+  }
+  .repo {
+    left: 20px; /* Ajusta a margem esquerda */
+    margin-top: 40px; /* Ajusta o espaçamento superior */
+  }
+}
+
+/* Telas grandes (≥992px) */
+@media (max-width: 992px) {
+  .container {
+      max-width: 80%;
+  }
+
+  .container i {
+      right: 10px;
+  }
+
+  .filter-btn {
+    margin-top: 10px; /* Ajusta o espaçamento superior */
+    width: auto;
+    margin-left: auto;
+    margin-right: 20px; /* Adiciona margem à direita */
+  }
+
+  .repo {
+    left: 50px; /* Ajusta a margem esquerda */
+    margin-top: 50px; /* Mantém o espaçamento superior */
+  }
+}
+
+/* Telas extra grandes (≥1200px) */
+@media (max-width: 1200px) {
+  .container {
+      max-width: 75%;
+  }
+
+  .container i {
+      right: 10px;
+  }
+  .filter-btn {
+    margin-top: 5px; /* Ajusta o espaçamento superior */
+    width: auto;
+    margin-left: auto;
+    margin-right: 25px; /* Adiciona margem à direita */
+  }
+
+  .repo {
+    left: 75px; /* Ajusta a margem esquerda */
+    margin-top: 50px; /* Mantém o espaçamento superior */
+  }
+}
