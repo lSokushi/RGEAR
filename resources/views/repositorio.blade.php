@@ -1,4 +1,5 @@
 <x-main-layout title="RGEAR | Repositorios">
+<link rel="stylesheet" href="{{asset('/css/repositorio.css')}}" />
   <main>
     <div class="repo">
       <h1 class="repo"><b>Repositório</b></h1>

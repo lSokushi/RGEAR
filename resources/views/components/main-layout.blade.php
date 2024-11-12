@@ -21,7 +21,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('/css/main.css')}}" />
-    <link rel="stylesheet" href="{{asset('/css/repositorio.css')}}" />
+    
     <title>{{$title}}</title>
 </head>
 
