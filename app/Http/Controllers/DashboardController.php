@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
  
 class DashboardController extends Controller
 {
-    /**
-     * Exibe a view do Dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         // Definindo um título para a página

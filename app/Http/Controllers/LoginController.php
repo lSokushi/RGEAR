@@ -11,27 +11,7 @@ class LoginController extends Controller
     // Exibir o formulário de login diretamente no controlador
     public function showLoginForm()
     {
-        return response()->view('auth.login', [
-            'html' => '
-<html>
-<head>
-<title>Login</title>
-</head>
-<body>
-<form method="POST" action="' . route('login.process') . '">
-                        ' . csrf_field() . '
-<label for="email">Email:</label>
-<input type="email" name="email" required autofocus>
-<br>
-<label for="password">Senha:</label>
-<input type="password" name="password" required>
-<br>
-<button type="submit">Login</button>
-</form>
-</body>
-</html>
-            '
-        ]);
+       return view("auth.login");
     }
  
     // Processar o login
@@ -48,7 +28,7 @@ class LoginController extends Controller
         }
  
         throw ValidationException::withMessages([
-            'email' => __('auth.failed'),
+            'email' => "Credenciais inválidas",
         ]);
     }
  
