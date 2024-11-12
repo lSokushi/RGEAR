@@ -1,5 +1,5 @@
 <x-main-layout title="RGEAR | Repositorios">
-<link rel="stylesheet" href="{{asset('/css/repositorio.css')}}" />
+  <link rel="stylesheet" href="{{asset('/css/repositorio.css')}}" />
   <main>
     <div class="repo">
       <h1 class="repo"><b>Repositório</b></h1>
@@ -166,57 +166,16 @@
         </h1:>
       </div>
       <div class="article-container2">
+        @foreach($publicacoes as $publicacao)
+           <x-publication-card
+              :image_caption="$publicacao['image_caption']" 
+              :image="$publicacao['image']"
+                :title="$publicacao['title']" 
+                :description="$publicacao['description']" 
+                :author="$publicacao['author']"
+                :updated_at="$publicacao['updated_at']" />
+        @endforeach
 
-        <div class="article-box">
-          <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276
-          </figure>
-          <div class="title-cards-art">
-            <h2>Título Artigo</h2>
-          </div>
-          <p>
-            This is a wider card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit
-            longer.
-          </p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
-        </div>
-        <div class="article-box">
-          <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276
-          </figure>
-          <div class="title-cards-art">
-            <h2>Título Artigo</h2>
-          </div>
-          <p>
-            This is a wider card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit
-            longer.
-          </p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
-        </div>
-        <div class="article-box">
-          <div class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</div>
-          <div class="title-cards-art">
-            <h2>Título Artigo</h2>
-          </div>
-          <p>
-            This is a wider card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit
-            longer.
-          </p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
-        </div>
-        <div class="article-box">
-          <div class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</div>
-          <div class="title-cards-art">
-            <h2>Título Artigo</h2>
-          </div>
-          <p>
-            This is a wider card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit
-            longer.
-          </p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
-        </div>
       </div>
 
       <nav class="link-vermais">

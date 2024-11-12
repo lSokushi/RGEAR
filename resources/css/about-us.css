@@ -1,63 +1,63 @@
 @import url(global.css);
 
 header {
-  background-image: linear-gradient(#0d731c, #075913);
-  height: 12.9rem;
+    background-image: linear-gradient(#0d731c, #075913);
+    height: 12.9rem;
 }
 
 a {
-  transition: 0.3s;
+    transition: 0.3s;
 }
 
 a:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 .title {
-  font-size: 3.8rem;
+    font-size: 3.8rem;
 }
 
 .article {
-  margin-top: 5.6rem;
-  gap: 6.4rem;
+    margin-top: 5.6rem;
+    gap: 6.4rem;
 }
 
 .highlight {
-  display: inline-block;
-  border-bottom: .5rem solid #1d571f;
-  width: 65%;
-  padding-bottom: .5rem;
+    display: inline-block;
+    border-bottom: 0.5rem solid #1d571f;
+    width: 65%;
+    padding-bottom: 0.5rem;
 }
 
 .nav__links,
 footer {
-  background-color: var(--dark-green);
+    background-color: var(--dark-green);
 }
 
 .article {
-  margin-top: 10.0rem;
+    margin-top: 10rem;
 }
 
 .custom-link {
-  color: var(--white);
-  text-decoration: none;
-  position: relative;
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
 }
 
 .custom-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -.3rem;
-  width: 100%;
-  height: .3rem;
-  background-color: #28a745;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.3rem;
+    width: 100%;
+    height: 0.3rem;
+    background-color: #28a745;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .custom-link:hover::after {
-  transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .pe-3 {
@@ -65,5 +65,5 @@ footer {
 }
 
 .marginTop {
-  margin-top: 8.0rem;
+    margin-top: 8rem;
 }

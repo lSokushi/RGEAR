@@ -13,7 +13,7 @@ Route::view("devs", "dev")->name("devs");
 
 Route::view("repositorio", "repositorio")->name("repositorio");
 
-Route::view("mudar-senha", "mudar-senha")->name("mudar-senha");
+Route::view("mudar-senha", "reset-password")->name("mudar-senha");
  
 // Exibir o formulário de login (a view é exibida diretamente pelo controlador)
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
