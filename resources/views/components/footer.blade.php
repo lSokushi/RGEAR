@@ -11,7 +11,7 @@
             <h4 class="fs-3">Redes Sociais</h4>
             <button class="text-danger p-2 border rounded d-flex align-items-center justify-content-center">
                 <i class="bi bi-instagram"></i>
-                <a class="text-danger ms-2" href="https://www.instagram.com/rgear.lft/?igsh=cHlsZHYwbXprMThm"
+                <a class="text-danger ms-2" href="https://www.instagram.com/rgear.lft"
                     target="_blank">
                     Instagram
                 </a>

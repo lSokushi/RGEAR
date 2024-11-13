@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Researcher;
+
 
 class SobreNosController extends Controller
 {
 
     public function index()
     {
+
+        $pesquisadores = Researcher::all();
+
+
         // Lista de pesquisadores
-        $pesquisadores = [
+        /* $pesquisadores = [
             [
                 'name' => 'Dermeval Heitor Souza Gritta',
                 'image' => 'img/perfil-dermeval.png',
@@ -46,7 +52,7 @@ class SobreNosController extends Controller
                 'bio' => 'Professor do Doutorado Multi-Institucional e Multidisciplinar em Difusão do Conhecimento (DMMDC) e do Mestrado em Propriedade Intelectual e Transferência de Tecnologia (PROFNIT). Atua no IFBA, campus Lauro de Freitas. Membro dos grupos de pesquisa NPAI (CNPq) e IPITT (PROFNIT IFBA), com foco em inovação e transferência de tecnologia.',
                 'direction' => 'end'
             ]
-        ];
+        ]; */
 
         // Passa a lista de pesquisadores para a view 'about-us'
         return view('sobreNos', [

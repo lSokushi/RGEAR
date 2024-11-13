@@ -48,7 +48,7 @@ class PesquisadorCardController extends Controller
             ]
         ];
 
-        dd($pesquisadores);
+       
         // Passa a lista de pesquisadores para a view 'about-us'
         return view('sobreNos', [
             "pesquisadores" => $pesquisadores

@@ -25,7 +25,7 @@
                     <x-pesquisador-card
                         :name="$pesquisador['name']"
                         :image="$pesquisador['image']"
-                        :bio="$pesquisador['bio']"
+                        :bio="$pesquisador['area_of_expertise']"
                         :direction="$pesquisador['direction']"
                     />
                 @endforeach
