@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +38,7 @@
           </p>
           <div class="collapse mb-4" id="collapseExample">
             <div class="card card-body border border-0">
-              <a href="#" onclick="showSection('usuario')">
+            <a href="{{route("dashboard")}}"  onclick="showSection('publicacoes')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-person-add" viewBox="0 0 16 16">
                   <path
@@ -67,42 +66,54 @@
           <i class="bi bi-box-arrow-right"></i> <a href="{{route('logout')}}" class="text-light text-decoration-none">Sair</a>
         </button>
       </aside>
-
-      <section class="col-md-10 bg-light" class="createUser">
+      <section class="col-md-10 bg-light hide" class="createPublication">
         <div class="p-4 container-fluid">
-          <h1 class="mb-4 text-dark w-100">Usuário</h1>
+          <h1 class="mb-4 text-dark w-100">Publicações</h1>
 
           <div class="bg-white p-4 shadow-sm rounded">
             <form class="row g-5">
               <div class="col-md-6">
-                <label for="inputName4" class="form-label fs-3">Nome Completo</label>
-                <input type="text" class="form-control h-75 fs-3" id="inputName4" placeholder="Maria Santana" />
-              </div>
-              <div class="col-md-6">
-                <label for="inputCPF4" class="form-label fs-3">CPF</label>
-                <input type="text" class="form-control h-75 fs-3" id="inputCPF4" placeholder="123.456.789-12" />
+                <label for="inputTitle4" class="form-label fs-3">Título da publicação</label>
+                <input type="text" class="form-control h-75 fs-3" id="inputTitle4"
+                  placeholder="Modelagem 3D com Blender" />
               </div>
 
               <div class="col-md-6">
-                <label for="inputTel" class="form-label fs-3">Telefone</label>
-                <input type="tel" class="form-control h-75 fs-3" id="inputTel" placeholder="55 5555-5555" />
+                <label for="inputAuthor4" class="form-label fs-3">Autores</label>
+                <input type="text" class="form-control h-75 fs-3" id="inputAuthor4"
+                  placeholder="France Ferreira Arnaut" />
               </div>
+
               <div class="col-md-6">
-                <label for="inputEmail" class="form-label fs-3">E-mail</label>
-                <input type="email" class="form-control h-75 fs-3" id="inputEmail" placeholder="example@email.com" />
+                <label for="inputResume" class="form-label fs-3">Resumo</label>
+                <textarea class="form-control fs-3 h-75" id="inputResume"
+                  aria-label="O evento de modelagem 3D com Blender ensina a criar objetos e cenários em 3D, abordando..."></textarea>
+              </div>
+
+              <div class="col-md-6">
+                <label for="itemType" class="form-label fs-3">Tipo de Item</label>
+                <select class="form-select form-select-lg fs-3 h-75" id="itemType" aria-label="Selecionar tipo de item">
+                  <option value="0">Selecionar tipo de item</option>
+                  <option value="1">Artigo</option>
+                  <option value="2">Jogo APK</option>
+                  <option value="3">Jogo Builder</option>
+                  <option value="4">Modelagens</option>
+                  <option value="5">Participação em Eventos</option>
+                  <option value="6">Outros</option>
+                </select>
               </div>
 
               <div class="col-md-3">
                 <fieldset class="mb-3">
-                  <legend class="col-form-label pt-0 fs-3">Tipo de Usuário</legend>
+                  <legend class="col-form-label pt-0 fs-3">Status</legend>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="userType" id="userType1" value="supervisor"
                       checked />
-                    <label class="form-check-label fs-3" for="userType1">Supervisor</label>
+                    <label class="form-check-label fs-3" for="userType1">Produção Interna</label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="userType" id="userType2" value="student" />
-                    <label class="form-check-label fs-3" for="userType2">Aluno</label>
+                    <label class="form-check-label fs-3" for="userType2">Participação Externa</label>
                   </div>
                 </fieldset>
               </div>
@@ -111,53 +122,67 @@
                 <fieldset class="mb-3">
                   <legend class="col-form-label pt-0 fs-3">Linha de Pesquisa</legend>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="researchLine" id="researchLine1"
-                      value="automation" checked />
-                    <label class="form-check-label fs-3" for="researchLine1">Automação e Robótica Educacional</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Automação e Robótica Educacional
+                    </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="researchLine" id="researchLine2"
-                      value="engineering" />
-                    <label class="form-check-label fs-3" for="researchLine2">Engenharia e IA Aplicada</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Engenharia e IA Aplicada
+                    </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="researchLine" id="researchLine3"
-                      value="computing" />
-                    <label class="form-check-label fs-3" for="researchLine3">Computação, Educação e
-                      Sustentabilidade</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Computação, Educação e
+                      Sustentabilidade
+                    </label>
                   </div>
                 </fieldset>
               </div>
 
               <div class="col-md-6">
-                <label for="inputPassword" class="form-label fs-3">Senha</label>
-                <input type="password" class="form-control p-3 fs-3" id="inputPassword" placeholder="Ex: 1234" />
+                <label for="formFileMultiple" class="form-label fs-3">Imagens da publicação</label>
+                <input class="form-control form-control-lg p-3 h-auto fs-3" type="file" id="formFileMultiple" multiple>
+              </div>
 
-                <div class="password-tips d-flex flex-column gap-1 mt-3 d-none">
-                  <p class="tip-password fw-medium">Sua senha deve conter</p>
-                  <ul class="list-unstyled">
-                    <li class="fw-medium">
-                      <i class="bi bi-x-circle-fill text-danger"></i> de 8 à 12 caracteres
-                    </li>
-                    <li class="fw-medium">
-                      <i class="bi bi-x-circle-fill text-danger"></i> letra minúscula
-                    </li>
-                    <li class="fw-medium">
-                      <i class="bi bi-x-circle-fill text-danger"></i> letra maiúscula
-                    </li>
-                    <li class="fw-medium">
-                      <i class="bi bi-x-circle-fill text-danger"></i> número
-                    </li>
-                    <li class="fw-medium">
-                      <i class="bi bi-x-circle-fill text-danger"></i> símbolos (Ex: !@#%$)
-                    </li>
-                  </ul>
+              <div class="d-flex justify-content-end">
+                <div class="col-md-2">
+                  <label for="inputYear4" class="form-label fs-3">Ano</label>
+                  <input type="number" class="form-control fs-3" id="inputYear4" placeholder="2024" />
+                </div>
+
+                <div class="col-md-2 ms-3">
+                  <label for="inputYear4" class="form-label fs-3">Local da Publicação</label>
+                  <input type="text" class="form-control fs-3" id="inputYear4" placeholder="Lauro de Freitas, BA" />
                 </div>
               </div>
 
               <div class="col-12 text-end">
-                <button type="submit" class="border-0 rounded text-light fs-3 shadow p-3">Cadastrar</button>
+                <button type="submit" class="border-0 rounded text-light fs-3 shadow">Cadastrar</button>
+                <button type="button" class="border-1 rounded-3 text-dark fs-3 shadow bg-light" data-bs-toggle="modal"
+                  data-bs-target="#previewModal">Pré-Visualização</button>
               </div>
+
+              <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title fs-3" id="previewModalLabel">Pré-Visualização</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam ipsam libero eaque error iusto fugit sint ut quaerat aut, voluptatem magni distinctio veniam nemo inventore beatae saepe iste. Ex, cumque.</p>                    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary fs-2" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </form>
           </div>
         </div>
