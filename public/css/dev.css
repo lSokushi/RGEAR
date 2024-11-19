@@ -1,0 +1,375 @@
+/* 1. Variables */
+:root {
+    --primary-color: #4d76a2;
+    --secondary-color: #104830;
+    --highlight-color: #34a853;
+    --light-bg: #f9f9f9;
+    --text-color: #181010;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --light-text: #ffffff;
+    --navbar-link-hover: rgba(255, 255, 255, 0.15); /* Fundo para hover do link da navbar */
+    --transition-standard: 0.3s ease;
+  }
+  
+  /* 2. Base Styles */
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color var(--transition-standard), color var(--transition-standard);
+  }
+  
+  /* 1. Header Styling: Updated for Enhanced Aesthetics */
+  /* Ajuste do espaçamento e box-shadow para uma aparência mais sutil e moderna */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra mais suave para um design limpo */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha discreta para dividir a seção */
+  }
+  
+  /* 2. Logo Styling: Added Subtle Hover Effect */
+  /* Aplicado um efeito hover para a logo, tornando-a mais interativa */
+  .header__logo {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+  .header__logo:hover {
+    opacity: 0.9; /* Efeito de transparência leve no hover */
+  }
+  
+  /* 3. Navigation Links: Minor Adjustments for Spacing and Readability */
+  /* Aumento leve no espaçamento e redução da fonte para um layout equilibrado */
+  .nav-links {
+    display: flex;
+    gap: 1.5rem; /* Reduzido o espaçamento para criar uma sensação de unidade */
+    font-weight: 500;
+    font-size: 1rem; /* Fonte ligeiramente reduzida para uma estética mais compacta */
+  }
+  
+  /* 4. Navigation Link Styles */
+  /* Ajuste das cores e transições para suavizar a interação */
+  .nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px; /* Bordas mais arredondadas para um visual moderno */
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+  
+  /* 5. Hover Effects on Navigation Links: Refined for Visual Feedback */
+  /* Melhoria na sombra e cor para um destaque mais claro e moderno */
+  .nav-links a:hover {
+    color: var(--highlight-color);
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente transparente */
+    transform: translateY(-1px); /* Efeito de movimento mais sutil */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15); /* Sombra leve para um efeito de profundidade */
+  }
+  
+  /* 6. Active Link Styling: Emphasized the Active State for Usability */
+  /* Adicionada uma linha de destaque mais espessa para o link ativo */
+  .nav-links .active {
+    color: var(--highlight-color);
+    border-bottom: 4px solid var(--highlight-color); /* Aumento da linha para reforçar o estado ativo */
+    font-weight: 600;
+  }
+  /* 4. Developers Section: Refined Padding and Background */
+  /* Ajustes no espaçamento e na cor de fundo para uma seção visualmente equilibrada */
+  .developers-section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+    background-color: var(--light-bg);
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transition: background-color var(--transition-standard), box-shadow 0.3s ease;
+  }
+  
+  .developers-section:hover {
+    background-color: #eef3f8; /* Tom mais claro para realçar o efeito de hover */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 5. Section Title and Subtitle: Improved Styling and Spacing */
+  /* Ajustes no tamanho da fonte e espaçamento para maior legibilidade e impacto visual */
+  .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    letter-spacing: 0.75px; /* Maior espaçamento para melhorar a leitura */
+    transition: color var(--transition-standard), transform 0.3s ease;
+  }
+  
+  .section-title:hover {
+    transform: translateY(-4px);
+    color: var(--highlight-color);
+  }
+  
+  .section-subtitle {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    transition: color var(--transition-standard), opacity 0.3s ease;
+    opacity: 0.85; /* Opacidade ajustada para melhorar contraste */
+  }
+  
+  .section-subtitle:hover {
+    opacity: 1;
+    color: var(--highlight-color);
+  }
+  
+  /* 6. Developer Card: Layout and Interaction Enhancements */
+  /* Atualização no layout para melhorar a organização e responsividade */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* Aumento do gap para uma apresentação mais limpa */
+    justify-content: center;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .developer-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1); /* Redução da sombra para uma aparência mais leve */
+    padding: 2.5rem 1.5rem;
+    width: 100%;
+    max-width: 300px; /* Ligeiro aumento na largura máxima para destaque do conteúdo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .developer-card:hover {
+    transform: translateY(-6px) scale(1.04); /* Efeito de interação mais suave */
+    box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.2); /* Sombra acentuada para destaque ao passar o mouse */
+  }
+  
+  /* 7. Developer Card Title and Content */
+  .developer-card h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .developer-card p {
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+  }
+  /* 7. Profile Image: Enhanced Styling and Shadow */
+  /* Adicionado um gradiente com mais contraste para destacar o contêiner da imagem */
+  .img-container {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--highlight-color));
+    border: 3px solid var(--light-bg);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra levemente aumentada para dar mais profundidade */
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .img-container:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra acentuada no hover */
+  }
+  
+  .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s ease;
+  }
+  
+  .developer-card:hover .img-container img {
+    transform: scale(1.15); /* Leve aumento do efeito de zoom no hover */
+    filter: brightness(1.15); /* Realce adicional para a imagem */
+  }
+  
+  /* 8. Card Title, Role, and Bio: Improved Text Spacing and Hierarchy */
+  /* Ajustes para destacar o título e criar uma hierarquia visual mais clara */
+  .card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.6rem;
+  }
+  
+  .role {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 1rem; /* Aumento do espaçamento para separar o cargo da biografia */
+  }
+  
+  .mini-bio {
+    font-size: 1rem;
+    color: #555; /* Tom ligeiramente mais escuro para legibilidade */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 260px; /* Limite de largura para uma aparência mais centrada e organizada */
+    margin: 0 auto 1.5rem;
+  }
+  /* 9. Skills Section in Card - Enhanced Layout and Interactions */
+  /* Aumento do espaçamento e ajuste de bordas para dar mais destaque aos badges */
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Aumento do espaçamento para proporcionar maior clareza entre os badges */
+    justify-content: center;
+    margin-bottom: 1.5rem; /* Margem inferior aumentada para separação mais clara */
+  }
+  
+  .skills .badge {
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-color), var(--highlight-color));
+    color: #fff;
+    padding: 0.5rem 1rem; /* Padding ajustado para um visual mais "pill" e confortável */
+    border-radius: 20px; /* Bordas mais arredondadas para suavizar o design */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Sombra mais leve para um efeito suave */
+    transition: transform 0.3s ease, background-color var(--transition-standard);
+  }
+  
+  .skills .badge:hover {
+    transform: scale(1.1); /* Aumento leve no efeito de hover para mais destaque */
+    background: linear-gradient(135deg, var(--highlight-color), var(--primary-color)); /* Gradiente invertido para interatividade */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada no hover */
+  }
+  /* 10. Social Links - Enhanced Layout and Interaction Effects */
+  /* Aumenta o espaçamento e ajusta o efeito de hover para destacar melhor os ícones sociais */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem; /* Aumento do espaçamento para uma separação mais clara entre os ícones */
+    margin-top: 2rem; /* Margem superior maior para uma separação mais limpa da seção anterior */
+  }
+  
+  .social-links a {
+    font-size: 2rem; /* Aumento do tamanho da fonte para tornar os ícones mais visíveis */
+    color: #555;
+    transition: color var(--transition-standard), transform 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-4px); /* Deslocamento ligeiramente maior no hover */
+  }
+  
+  /* Estilo de bullet decorativo antes dos links */
+  .social-links a::before {
+    content: '';
+    display: inline-block;
+    width: 4px; /* Bullet maior para melhor visibilidade */
+    height: 4px;
+    background-color: var(--primary-color);
+    margin-right: 6px;
+    border-radius: 50%;
+    transition: background-color var(--transition-standard), transform 0.3s ease;
+  }
+  
+  .social-links a:hover::before {
+    background-color: var(--highlight-color);
+    transform: scale(1.2); /* Aumento da escala para dar mais ênfase no hover */
+  }
+  /* 11. Banner Section: Enhanced Visuals and Layout */
+  /* Ajustes no gradiente e espaçamento para tornar o banner mais atraente e dinâmico */
+  .banner {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-text);
+    padding: 5rem 2.5rem; /* Leve aumento no padding lateral para maior conforto visual */
+    border-radius: 20px; /* Bordas mais arredondadas para suavizar o design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem auto;
+    max-width: 1100px;
+    text-align: center;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2); /* Sombra ajustada para maior suavidade */
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+  }
+  
+  .banner:hover {
+    box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.3); /* Efeito de profundidade no hover */
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); /* Inversão do gradiente no hover */
+  }
+  
+  /* 12. Banner Title: Increased Emphasis and Interaction */
+  /* Ajustes de espaçamento e efeito hover para destacar o título */
+  .banner-title {
+    font-size: 3.2rem; /* Leve aumento para maior impacto */
+    font-weight: 700;
+    color: var(--light-text);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.7px; /* Aumento do espaçamento para uma leitura mais fácil */
+    transition: transform 0.3s ease, color var(--transition-standard);
+  }
+  
+  .banner-title:hover {
+    transform: translateY(-6px); /* Efeito de hover mais pronunciado */
+    color: var(--highlight-color);
+  }
+  
+  /* 13. Banner Subtitle: Enhanced for Visual Contrast */
+  .banner-subtitle {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--highlight-color);
+    margin-bottom: 2rem; /* Aumento da margem inferior para espaçamento mais claro */
+  }
+  
+  /* 14. Banner Description: Improved Readability */
+  .banner-description {
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.8; /* Ajuste na altura da linha para facilitar a leitura */
+    color: rgba(255, 255, 255, 0.85); /* Leve ajuste na opacidade para melhor contraste */
+    margin-bottom: 2rem;
+    max-width: 750px; /* Ligeiro aumento da largura máxima para acomodar texto */
+  }
+  
+  /* 15. Banner Highlight: Interactive Effect */
+  /* Ajuste na cor de fundo e interatividade para destacar informações importantes */
+  .banner-highlight {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--highlight-color);
+    padding: 0.3rem 0.7rem; /* Aumento do padding para maior conforto visual */
+    background-color: rgba(255, 255, 255, 0.15); /* Cor de fundo ajustada para melhor contraste */
+    border-radius: 10px; /* Bordas mais arredondadas para um toque moderno */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .banner-highlight:hover {
+    background-color: rgba(255, 255, 255, 0.25); /* Acentuação da cor de fundo no hover */
+    transform: scale(1.05); /* Efeito de crescimento sutil para chamar a atenção */
+  }
+  
+  /* 12. Responsiveness */
+  @media (max-width: 768px) {
+    .section-title { font-size: 2rem; }
+    .section-subtitle { font-size: 1rem; }
+    .developer-card { padding: 15px; }
+    .banner { padding: 3rem 1rem; }
+    .banner-title { font-size: 2rem; }
+    .banner-subtitle { font-size: 1.2rem; }
+    .banner-description { font-size: 1rem; }
+    .banner-highlight { font-size: 1.2rem; }
+  }
+  

@@ -24,6 +24,9 @@
         <li>
           <a href="{{route("repositorio")}}" class="text-light custom-link">Repositório</a>
         </li>
+        <li>
+          <a href="{{route("login")}}" class="text-light custom-link">Login</a>
+        </li>
       </ul>
     </div>
   </nav>

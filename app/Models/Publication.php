@@ -9,31 +9,22 @@ class Publication extends Model
 {
     use HasFactory;
 
+    // Campos que podem ser preenchidos em massa
     protected $fillable = [
         'title',
-        'authors',
+        'author',
+        'resume',
+        'item_type',
+        'status',
+        'research_lines',
+        'images',
         'year',
-        'summary',
-        'publication_location',
-        'user_id',
-        'line_id',
+        'location',
     ];
 
-    // Relacionamento com User
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    // Relacionamento com ResearchLine
-    public function researchLine()
-    {
-        return $this->belongsTo(ResearchLine::class, 'line_id');
-    }
-
-    // Relacionamento com PublicationTypeAssignment
-    public function publicationTypes()
-    {
-        return $this->belongsToMany(PublicationType::class, 'publication_type_assignments');
-    }
+    // Para armazenar linhas de pesquisa como JSON
+    protected $casts = [
+        'research_lines' => 'array',
+        'images' => 'array', // Se você armazena múltiplas imagens em formato JSON
+    ];
 }

@@ -10,17 +10,16 @@ class CreatePublicationsTable extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('authors', 255);
-            $table->year('year');
-            $table->text('summary')->nullable();
-            $table->string('publication_location', 100)->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('line_id')->nullable();
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('line_id')->references('id')->on('research_lines')->onDelete('set null');
+            $table->string('title');               // Título da publicação
+            $table->string('author');              // Autor(es)
+            $table->text('resume');                // Resumo
+            $table->string('item_type');           // Tipo de item (ex.: artigo, jogo, etc.)
+            $table->string('status');              // Status (Produção Interna, Participação Externa)
+            $table->json('research_lines');        // Linhas de pesquisa (JSON)
+            $table->json('images')->nullable();    // Imagens (JSON)
+            $table->year('year');                  // Ano da publicação
+            $table->string('location');            // Local da publicação
+            $table->timestamps();                  // created_at, updated_at
         });
     }
 

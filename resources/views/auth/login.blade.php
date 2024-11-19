@@ -7,8 +7,8 @@
         <form method="POST" action="{{ route('login') }}" class="login-form">
             @csrf
 
-            <input type="email" name="email" id="email">
-            <input type="password" name="password" id="password">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="password" name="password" id="password" placeholder ="Senha">
             <input type="submit" value="Entrar">
 
             
