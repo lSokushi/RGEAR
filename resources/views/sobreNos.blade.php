@@ -25,5 +25,4 @@
         crossorigin="anonymous"></script>
 </body>
 
-</html>
 </x-main-layout>
