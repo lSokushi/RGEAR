@@ -50,9 +50,9 @@
         </nav>
         <button
           class="button__exit mt-auto w-100 fs-3 p-4 rounded-3 border-0 text-light d-flex gap-4 justify-content-center align-items-center">
-          <i class="bi bi-box-arrow-right"></i> <a href="{{route('logout')}}" class="text-light text-decoration-none">Sair</a>
+          <i class="bi bi-box-arrow-right"></i><a href="{{route('logout')}}" class="text-light text-decoration-none">Sair</a>
         </button>
-      </aside>
+      </aside>  
 
       <section class="col-md-10 bg-light" class="createUser">
         <div class="p-4 container-fluid">
