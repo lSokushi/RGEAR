@@ -1,16 +1,24 @@
-// Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', () => {
-    // Sidebar menu toggle
-    const collapseMenuButton = document.querySelector('[data-bs-toggle="collapse"]');
-    const collapseMenu = document.getElementById('collapseMenu');
+    // Pré-visualização do formulário
+    const previewButton = document.querySelector('[data-bs-target="#previewModal"]');
+    if (previewButton) {
+        previewButton.addEventListener('click', () => {
+            const previewModalBody = document.querySelector("#previewModal .modal-body");
+            const formFields = document.querySelectorAll("form input, form textarea, form select");
+            let previewContent = "<ul>";
 
-    if (collapseMenuButton && collapseMenu) {
-        collapseMenuButton.addEventListener('click', () => {
-            collapseMenu.classList.toggle('show');
+            formFields.forEach((field) => {
+                if (field.type !== "file") {
+                    previewContent += `<li><strong>${field.previousElementSibling?.innerText || field.name}:</strong> ${field.value || "Não preenchido"}</li>`;
+                }
+            });
+
+            previewContent += "</ul>";
+            previewModalBody.innerHTML = previewContent;
         });
     }
 
-    // Form validation for publication creation
+    // Validação de formulário
     const publicationForm = document.querySelector('form[action*="dashboard-publication.store"]');
     if (publicationForm) {
         publicationForm.addEventListener('submit', (e) => {
@@ -34,23 +42,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Sidebar toggle visibility for responsive layouts
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const sidebar = document.querySelector('aside');
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('d-none');
-        });
-    }
-
-    // File input validation for multiple files
+    // Limitação no upload de arquivos
     const fileInput = document.getElementById('formFileMultiple');
     if (fileInput) {
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length > 5) {
                 alert('Você pode enviar no máximo 5 arquivos.');
                 fileInput.value = '';
+            } else {
+                const fileNames = Array.from(fileInput.files).map((file) => file.name).join(", ");
+                alert(`Arquivos selecionados: ${fileNames}`);
             }
+        });
+    }
+
+    // Collapse Navigation
+    const collapseToggle = document.querySelector('[data-bs-toggle="collapse"]');
+    if (collapseToggle) {
+        collapseToggle.addEventListener('click', () => {
+            const target = document.querySelector(collapseToggle.getAttribute('href'));
+            if (target) {
+                target.classList.toggle('show');
+            }
+        });
+    }
+
+    // Sidebar toggle visibility for responsive layouts
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const sidebar = document.querySelector('aside');
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('d-none');
         });
     }
 });

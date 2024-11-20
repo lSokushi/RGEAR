@@ -17,6 +17,22 @@
                             @endif
                         </h2>
                     </div>
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     <div class="divider"></div>
                     <nav class="flex-grow-1 h-100">
                         <p class="d-inline-flex gap-1 mt-5">
@@ -88,7 +104,8 @@
 
                                 <div class="col-md-6">
                                     <label for="itemType" class="form-label fs-3">Tipo de Item</label>
-                                    <select class="form-select form-select-lg fs-3 h-75" name="type" id="itemType">
+                                    <select class="form-select form-select-lg fs-3 h-75" name="type"
+                                        id="itemType">
                                         <option value="0">Selecionar tipo de item</option>
                                         <option value="1">Artigo</option>
                                         <option value="2">Jogo APK</option>
@@ -207,6 +224,7 @@
                 </section>
             </div>
         </main>
+        <script src="public/js/DashboardPublicationController.js"></script>
     </body>
 
 </x-internal-layout>

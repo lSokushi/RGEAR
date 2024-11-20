@@ -16,8 +16,7 @@ class DashboardPublicationController extends Controller
 
         // Busca as publicações do banco de dados
         $publications = Publication::all();
-
-
+        
         // Retorna a view com as publicações e o título
         return view('dashboard-publication', compact('publications', 'title'));
     }
@@ -47,6 +46,7 @@ class DashboardPublicationController extends Controller
 
             Publication::create(array_merge($validatedData, [
                 'files' => json_encode($filePaths),
+                
             ]));
 
             return redirect()->route('dashboard-publication')->with('success', 'Publicação cadastrada com sucesso!');

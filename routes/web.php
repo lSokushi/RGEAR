@@ -13,8 +13,6 @@ Route::get('sobre-nos', [SobreNosController::class, "index"])->name("sobrenos");
 
 Route::view("devs", "dev")->name("devs");
 
-
-
 Route::view("mudar-senha", "reset-password")->name("mudar-senha");
 
 // Exibir o formulário de login (a view é exibida diretamente pelo controlador)
