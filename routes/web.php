@@ -27,7 +27,8 @@ Route::post('login', [LoginController::class, 'authenticate'])->name('login.proc
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("dashboard", [DashboardController::class, "index"])->name("dashboard");
-Route::get("dashboard-publication", [DashboardPublicationController::class, "index"])->name("dashboard-publication");
+Route::get('/dashboard-publication', [DashboardPublicationController::class, 'index'])->name('dashboard-publication')->middleware('auth');
+Route::post("dashboard-publication/store", [DashboardPublicationController::class, "store"])->name("dashboard-publication.store");
 
 Route::get('repositorio', [RepositorioController::class, 'index'])->name("repositorio");
 

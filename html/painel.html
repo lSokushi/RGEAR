@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Submissão de Arquivos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Barra de Progresso -->
+        <div class="progress-menu d-flex mb-3">
+            <button class="btn btn-success me-1">Descrição</button>
+            <button class="btn btn-light border me-1">Upload</button>
+            <button class="btn btn-light border me-1">Revisão</button>
+            <button class="btn btn-light border me-1">Licença</button>
+            <button class="btn btn-light border">Concluir</button>
+        </div>
+
+        <!-- Título -->
+        <h3 class="mb-3">Item submetido</h3>
+        <h4>Descrever o item</h4>
+
+        <!-- Formulário de Submissão -->
+        <div class="card">
+            <div class="card-body">
+                <h3 class="mb-3">Carregar arquivo(s)</h3>
+                <form>
+                    <!-- Escolher Arquivo -->
+                    <div class="mb-3">
+                        <label for="file" class="form-label"><strong>Arquivo:</strong></label>
+                        <input type="file" id="file" class="form-control">
+                        <small class="form-text text-muted">Por favor, entre com a localização completa do arquivo no seu computador. Caso clique em "navegar...", uma nova janela se abrirá para permitir que navegue e selecione o arquivo no seu computador.</small>
+                    </div>
+
+                    <!-- Descrição do arquivo -->
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label"><strong>Descrição do arquivo:</strong></label>
+                        <textarea id="descricao" class="form-control" rows="2" placeholder="Exemplo: Artigo principal, ou Relatório de pesquisa."></textarea>
+                    </div>
+
+                    <!-- Acesso Embargado -->
+                    <div class="mb-3">
+                        <label for="data-embargo" class="form-label"><strong>Acesso embargado até uma data específica:</strong></label>
+                        <input type="date" id="data-embargo" class="form-control">
+                        <small class="form-text text-muted">Formatos de data aceitável: yyyy (ano), yyyy-mm (ano e mês), yyyy-mm-dd (ano, mês e dia)</small>
+                    </div>
+
+                    <!-- Razão -->
+                    <div class="mb-3">
+                        <label for="razao" class="form-label"><strong>Razão:</strong></label>
+                        <textarea id="razao" class="form-control" rows="3" placeholder="The reason for the embargo, typically for internal use only. Optional."></textarea>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary">Carregar arquivo & adicionar outro</button>
+                        <div>
+                            <button type="button" class="btn btn-outline-secondary">Salvar e Sair</button>
+                            <button type="submit" class="btn btn-primary">Próximo</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
