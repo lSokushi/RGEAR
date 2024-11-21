@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             "status" => "active",	
             "password"=> Hash::make("123"),
         ]);
-         
-         /*$this->call(RoleSeeder::class);
-         $this->call([ResearchSeeder::class]);*/
 
+         
+        /* $this->call(RoleSeeder::class);
+         $this->call([ResearchSeeder::class]);*/
     }
 }
