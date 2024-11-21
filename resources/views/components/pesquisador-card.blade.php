@@ -1,5 +1,5 @@
-@props(['name', 'image', 'bio', 'direction' => 'start'])
-
+@props(['name', 'image', 'bio', 'link', 'direction' => 'start'])
+ 
 <div class="card mb-3 border w-100" style="max-width: 780px">
     <div class="row g-0 d-flex text-md-start text-center justify-content-{{ $direction }}">
         <div class="col-md-4 d-flex justify-content-center align-items-center">
@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8 d-flex flex-column justify-content-center align-items-center">
             <div class="card-body">
-                <h3 class="card-title fs-2 mb-5 fw-bold highlight">{{ $name }}</h3>
+                <a href="{{$link}}" class="card-title fs-2 mb-5 fw-bold highlight">{{ $name }}</a>
                 <p class="card-text w-100" style="text-align: justify;">
                     {{ $bio }}
                 </p>

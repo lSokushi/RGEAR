@@ -15,9 +15,12 @@
 }
 
 header {
-    background-image: linear-gradient(#0d731c, #075913);
-    height: 12.9rem;
-  }
+  background-image: linear-gradient(#0d731c, #075913);
+  height: 12.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
   
   a {
     transition: 0.3s;
