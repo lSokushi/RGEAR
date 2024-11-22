@@ -17,6 +17,7 @@ class CreatePublicationsTable extends Migration
             $table->string('status');              // Status (Produção Interna, Participação Externa)
             $table->json('research_lines');        // Linhas de pesquisa (JSON)
             $table->json('images')->nullable();    // Imagens (JSON)
+            $table->string('file');                // Arquivo da publicação
             $table->year('year');                  // Ano da publicação
             $table->string('location');            // Local da publicação
             $table->timestamps();                  // created_at, updated_at
@@ -26,5 +27,9 @@ class CreatePublicationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('publications');
+    }
+    public function create()
+    {
+        return view('dashboard.publication');
     }
 }

@@ -21,6 +21,7 @@ class CreateResearchersTable extends Migration
             $table->string('area_of_expertise')->nullable(); // Área de especialização
             $table->enum('status', ['ativo', 'inativo'])->default('ativo'); // Status de participação
             $table->enum('direction', ['start', 'end'])->default('start'); // Direção da foto na view
+            $table->string('link')->nullable(); //Link para o perfil do pesquisador (linkedin, etc)
             $table->timestamps(); // Created at e Updated at
         });
     }

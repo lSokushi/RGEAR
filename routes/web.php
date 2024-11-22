@@ -26,9 +26,12 @@ Route::post('login', [LoginController::class, 'authenticate'])->name('login.proc
 // Fazer logout
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get("dashboard", [DashboardController::class, "index"])->name("dashboard");
-Route::get("dashboard-publication", [DashboardPublicationController::class, "create"])->name("dashboard-publication");
-Route::post("dashboard-publication", [DashboardPublicationController::class, "store"])->name("publication.store");
+Route::get("dashboard", [DashboardController::class, "index"])->middleware("auth")->name("dashboard");
+Route::get('/dashboard-publication', [DashboardPublicationController::class, 'index'])->middleware("auth")->name('dashboard-publication');
+Route::prefix('dashboard-publication')->middleware("auth")->group(function () {
+    Route::get('/create', [DashboardPublicationController::class, 'create'])->name('dashboard-publication.create');
+    Route::post('/store', [DashboardPublicationController::class, 'store'])->name('dashboard-publication.store');
+});
 
 Route::get('repositorio', [RepositorioController::class, 'index'])->name("repositorio");
 

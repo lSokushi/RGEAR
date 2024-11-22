@@ -60,8 +60,23 @@
           <div class="p-4 container-fluid">
             <h1 class="mb-4 text-dark w-100">Publicações</h1>
 
+            @if (Session::has('success'))
+        <div class="alert alert-success">
+          {{ Session::get('success') }}
+        </div>
+      @endif
+
+            @if ($errors->any())
+        @foreach ($errors->all() as $error)
+      <div class="alert alert-danger">
+        {{ $error }}
+      </div>
+    @endforeach
+
+      @endif
+
             <div class="bg-white p-4 shadow-sm rounded">
-              <form class="row g-5" method="POST" action="{{route("publication.store")}}">
+              <form action="{{ route('dashboard-publication.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6">
                   <label for="inputTitle4" class="form-label fs-3">Título da publicação</label>
@@ -100,12 +115,12 @@
                   <fieldset class="mb-3">
                     <legend class="col-form-label pt-0 fs-3">Status</legend>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="userType" id="userType1" value="supervisor"
+                      <input class="form-check-input" type="radio" name="status" id="userType1" value="supervisor"
                         checked required />
                       <label class="form-check-label fs-3" for="userType1">Produção Interna</label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="userType" id="userType2" value="student" />
+                      <input class="form-check-input" type="radio" name="status" id="userType2" value="student" />
                       <label class="form-check-label fs-3" for="userType2">Participação Externa</label>
                     </div>
                   </fieldset>
@@ -116,21 +131,21 @@
                     <legend class="col-form-label pt-0 fs-3">Linha de Pesquisa</legend>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="Automação e Robótica Educacional"
-                        id="flexCheckDefault" name="linha_pesquisa[]">
+                        id="flexCheckDefault" name="research lines[]">
                       <label class="form-check-label" for="flexCheckDefault">
                         Automação e Robótica Educacional
                       </label>
                     </div>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="Engenharia e IA Aplicada"
-                        id="checkbox_engenharia" name="linha_pesquisa[]">
+                        id="checkbox_engenharia" name="research lines[]">
                       <label class="form-check-label" for="checkbox_engenharia">
                         Engenharia e IA Aplicada
                       </label>
                     </div>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="Computação, Educação e Sustentabilidade"
-                        id="checkbox_computacao" name="linha_pesquisa[]">
+                        id="checkbox_computacao" name="research lines[]">
                       <label class="form-check-label" for="checkbox_computacao">
                         Computação, Educação e
                         Sustentabilidade
@@ -141,57 +156,59 @@
 
                 <div class="col-md-6">
                   <label for="formFileMultiple" class="form-label fs-3">Imagens da publicação</label>
-                  <input class="form-control form-control-lg p-3 h-auto fs-3" type="file" id="formFileMultiple" multiple
-                    name="imagem">
+                  <input class="form-control form-control-lg p-3 h-auto fs-3" type="file" id="formFileMultiple" accept="image/png,image/webp,image/jpg,image/jpeg" multiple
+                    name="images[]">
                 </div>
                 <div class="col-md-6">
                   <label for="formFileMultiple" class="form-label fs-3">Arquivo</label>
-                  <input class="form-control form-control-lg p-3 h-auto fs-3" type="file" id="formFileMultiple" multiple
+                  <input class="form-control form-control-lg p-3 h-auto fs-3" type="file" accept="application/pdf,application/zip,application/x-zip,application/x-zip-compressed,.apk,.build" id="formFileMultiple" multiple
                     name="file">
                 </div>
-                <!-- <div class="d-flex justify-content-end">
-                <div class="col-md-2">
-                  <label for="inputYear4" class="form-label fs-3">Ano</label>
-                  <input type="number" class="form-control fs-3" id="inputYear4" placeholder="2024" />
-                </div> -->
 
-                <div class="col-md-2 ms-3">
-                  <label for="inputYear4" class="form-label fs-3">Local da Publicação</label>
-                  <input type="text" class="form-control fs-3" id="inputYear4" placeholder="Lauro de Freitas, BA"
-                    required name="local" />
-                </div>
-            </div>
-
-            <div class="col-12 text-end">
-              <button type="submit" class="border-0 rounded text-light fs-3 shadow">Cadastrar</button>
-              <button type="button" class="border-1 rounded-3 text-dark fs-3 shadow bg-light" data-bs-toggle="modal"
-                data-bs-target="#previewModal">Pré-Visualização</button>
-            </div>
-
-            <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title fs-3" id="previewModalLabel">Pré-Visualização</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="d-flex justify-content-end">
+                  <div class="col-md-2">
+                    <label for="inputYear4" class="form-label fs-3">Ano</label>
+                    <input type="number" class="form-control fs-3" id="inputYear4" placeholder="2024" step="1" name="year"/>
                   </div>
-                  <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam ipsam libero eaque error iusto
-                      fugit sint ut quaerat aut, voluptatem magni distinctio veniam nemo inventore beatae saepe iste.
-                      Ex, cumque.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary fs-2" data-bs-dismiss="modal">Fechar</button>
+
+                  <div class="col-md-2 ms-3">
+                    <label for="inputYear4" class="form-label fs-3">Local da Publicação</label>
+                    <input type="text" class="form-control fs-3" id="inputYear4" placeholder="Lauro de Freitas, BA"
+                      required name="location" />
                   </div>
                 </div>
-              </div>
-            </div>
 
-            </form>
+                <div class="col-12 text-end">
+                  <button type="submit" class="border-0 rounded text-light fs-3 shadow">Cadastrar</button>
+                  <button type="button" class="border-1 rounded-3 text-dark fs-3 shadow bg-light" data-bs-toggle="modal"
+                    data-bs-target="#previewModal">Pré-Visualização</button>
+                </div>
+
+                <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title fs-3" id="previewModalLabel">Pré-Visualização</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam ipsam libero eaque error iusto
+                          fugit sint ut quaerat aut, voluptatem magni distinctio veniam nemo inventore beatae saepe
+                          iste.
+                          Ex, cumque.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary fs-2" data-bs-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
           </div>
-      </div>
-      </section>
+        </section>
 
 
       </div>
