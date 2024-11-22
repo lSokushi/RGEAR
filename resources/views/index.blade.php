@@ -2,43 +2,9 @@
     <main>
         <h1 class="main-artigos main-artigos__text">Artigos em Destaque</h1>
         <div class="cards-area">
-            <div class="card-1">
-                <img class="main-cartao__body-image" src="https://placehold.co/507x335" alt="Avatar"
-                    style="width: 100%" />
-                <div class="container texto-card">
-                    <h4><b>Título do Cartão</b></h4>
-                    <p>
-                        This is a wider card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
-                    </p>
-                    <p><small>Autor | last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card-2">
-                <img class="main-cartao__body-image__2" src="https://placehold.co/181x215" alt="Avatar" />
-                <div class="container texto-card">
-                    <h4><b>Título do Cartão</b></h4>
-                    <p>
-                        This is a wider card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
-                    </p>
-                    <p><small>Autor | last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card-3">
-                <img class="main-cartao__body-image__2" src="https://placehold.co/181x215" alt="Avatar" />
-                <div class="container texto-card">
-                    <h4><b>Título do Cartão</b></h4>
-                    <p>
-                        This is a wider card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
-                    </p>
-                    <p><small>Autor | last updated 3 mins ago</small></p>
-                </div>
-            </div>
+            @foreach ($publications as $key => $publication)
+                <x-index-card :index="$key + 1" :title="$publication['title']" :resume="$publication['resume']" :author="$publication['author']" :year="$publication['year']" :image="json_decode($publication['images'])[0]"></x-index-card>
+            @endforeach
         </div>
         <div>
             <a class="ver-mais" href="#">

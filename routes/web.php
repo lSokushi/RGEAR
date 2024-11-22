@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RepositorioController;
 use App\Http\Controllers\DashboardPublicationController;
 use App\Http\Controllers\DeveloperController;
@@ -7,7 +8,7 @@ use App\Http\Controllers\SobreNosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
-Route::view("/", "index")->name("index");
+Route::get("/", [IndexController::class, "index"])->name("index");
 
 Route::get('sobre-nos', [SobreNosController::class, "index"])->name("sobrenos");
 
