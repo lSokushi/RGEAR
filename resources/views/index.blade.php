@@ -22,7 +22,7 @@
                             <img class="main-cartao__body-image" src="https://placehold.co/294x276" alt="Avatar"
                                 style="width: 100%" />
                             <div class="container texto-cards">
-                                <h4><b>Título do Cartão</b></h4>
+                                <h4 class="titulo-artigo"><b>Título do Cartão</b></h4>
                                 <p>
                                     This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit
@@ -37,7 +37,7 @@
                             <img class="main-cartao__body-image" src="https://placehold.co/294x276" alt="Avatar"
                                 style="width: 100%" />
                             <div class="container texto-cards">
-                                <h4><b>Título do Cartão</b></h4>
+                                <h4 class="titulo-artigo"><b>Título do Cartão</b></h4>
                                 <p>
                                     This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit
@@ -52,7 +52,7 @@
                             <img class="main-cartao__body-image" src="https://placehold.co/294x276" alt="Avatar"
                                 style="width: 100%" />
                             <div class="container texto-cards">
-                                <h4><b>Título do Cartão</b></h4>
+                                <h4 class="titulo-artigo"><b>Título do Cartão</b></h4>
                                 <p>
                                     This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit
@@ -67,7 +67,7 @@
                             <img class="main-cartao__body-image" src="https://placehold.co/294x276" alt="Avatar"
                                 style="width: 100%" />
                             <div class="container texto-cards">
-                                <h4><b>Título do Cartão</b></h4>
+                                <h4 class="titulo-artigo"><b>Título do Cartão</b></h4>
                                 <p>
                                     This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit
@@ -82,7 +82,7 @@
                             <img class="main-cartao__body-image" src="https://placehold.co/294x276" alt="Avatar"
                                 style="width: 100%" />
                             <div class="container texto-cards">
-                                <h4><b>Título do Cartão</b></h4>
+                                <h4 class="titulo-artigo"><b>Título do Cartão</b></h4>
                                 <p>
                                     This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit
@@ -97,7 +97,7 @@
                             <img class="main-cartao__body-image" src="https://placehold.co/294x276" alt="Avatar"
                                 style="width: 100%" />
                             <div class="container texto-cards">
-                                <h4><b>Título do Cartão</b></h4>
+                                <h4 class="titulo-artigo"><b>Título do Cartão</b></h4>
                                 <p>
                                     This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit

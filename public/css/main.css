@@ -332,5 +332,12 @@ footer {
         }
       }
       
+img{
+  max-width: 100%; /* A imagem não ultrapassa a largura do container */
+  max-height: 340px; /* A imagem não terá mais de 400px de altura */
+  height: auto; /* Mantém a proporção original */
+  display: block; /* Remove espaçamento abaixo da imagem */
+}
+
 
       

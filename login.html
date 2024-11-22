@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- 1. Configurações Gerais e Estilos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RGEAR | Recuperação de Senha</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../css/change-password.css" />
+    <link rel="stylesheet" href=" ../../css/login.css">
+  </head>
+ 
+  <body>
+    <!-- 2. Cabeçalho com Navegação -->
+    <header class="d-flex flex-column h-auto">
+      <nav>
+        <div
+          class="p-4 d-flex align-items-center gap-4 gap-md-5 w-100 justify-content-around justify-content-md-around"
+        >
+          <h1 class="mb-0">
+            <img
+              class="img-fluid"
+              src="../../assets/img/logo_ifba_lauro.png"
+              alt="Logo Vertical IFBA Lauro de Freitas"
+              style="max-width: 150px; height: auto"
+            />
+          </h1>
+          <a>
+            <img
+              class="img-fluid"
+              src="../../assets/img/logo_RGEAR.png"
+              alt="Logo do Grupo de Pesquisa em Engenharia, Inteligência Artificial e Robótica Aplicadas - RGEAR"
+              style="max-width: 150px; height: auto"
+            />
+          </a>
+        </div>
+        <div
+          class="container-fluid nav__links d-flex justify-content-center align-items-center mt-auto p-3"
+        >
+          <ul
+            class="d-flex gap-4 gap-md-5 list-unstyled mb-0 align-items-center"
+          >
+            <li><a href="#" class="text-light custom-link">Início</a></li>
+            <li><a href="#" class="text-light custom-link">Repositório</a></li>
+            <li><a href="#" class="text-light custom-link">Destaques</a></li>
+            <li><a href="#" class="text-light custom-link">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+ 
+     
+    </header>
+    <main class="login-container">
+      <div class="login-box">
+          <div class="login-form">
+              <h2>Login</h2>
+              <p>Acesso ao Repositório Acadêmico</p>
+              <form action="/login" method="POST">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="jane.doe@gmail.com" required>
+ 
+                  <label for="password">Password</label>
+                  <div class="password-container">
+                      <input type="password" id="password" name="password" placeholder="******" required>
+                      <button type="button" id="togglePassword" class="toggle-password">&#128065;</button>
+                  </div>
+ 
+                  <div class="options">
+                      <label>
+                          <input type="checkbox" name="remember"> Mantenha-se Conectado
+                      </label>
+                      <a href="/resources/view/Recuperar_Senha/Forgot-password.html" class="forgot-password">Esqueceu a senha?</a>
+                  </div>
+                  <button type="submit" class="login-button">Login</button>
+              </form>
+          </div>
+          <div class="logo-container">
+              <img src="/public/img/login.png" alt="Logo RGear">
+          </div>
+      </div>    
+        <!-- Formulário de Recuperação de Senha -->
+        <div class="card container-fluid col-12 mx-auto" id="passwordRecoveryForm" style="display: none;">
+          <h5 class="card-header fs-1 p-3 text-center">Recuperação de Senha</h5>
+          <div class="card-body">
+            <form id="formRecovery">
+              <label for="inputRecoveryEmail" class="form-label fs-3 fw-bold">Insira o e-mail associado à conta</label>
+              <input
+                class="form-control fs-3 p-3"
+                id="inputRecoveryEmail"
+                type="email"
+                placeholder="Digite seu e-mail institucional"
+                required
+              />
+              <div class="text-end">
+                <button
+                  type="button"
+                  class="btn-submit mt-3 fs-4 text-light p-3 w-25 rounded border-0"
+                  data-action="send-recovery"
+                >
+                  Enviar
+                </button>
+              </div>
+            </form>
+            <div class="text-center mt-3">
+              <button
+                type="button"
+                class="btn-link text-decoration-none text-primary"
+                data-action="back-to-login"
+              >
+                Voltar ao Login
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+     
+      <!-- 5. Rodapé -->
+    <footer class="p-4 text-light marginTop">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100 footer__container text-center text-md-start gap-3 gap-md-5"
+      >
+        <a
+          class="mb-0"
+          href="https://dgp.cnpq.br/dgp/espelhogrupo/9436091690747959"
+          target="_blank"
+        >
+          <img
+            src="../../assets/img/logo_RGEAR.png"
+            alt="Logo do Grupo de Pesquisa em Engenharia, Inteligência Artificial e Robótica Aplicadas - RGEAR"
+            style="max-width: 150px; height: auto"
+          />
+        </a>
+        <div class="footer__social-media my-3 my-md-0">
+          <h4 class="fs-3">Redes Sociais</h4>
+          <button
+            class="text-danger p-2 border border-0 rounded d-flex align-items-center justify-content-center"
+          >
+            <i class="bi bi-instagram"></i>
+            <a
+              class="text-danger ms-2"
+              href="https://www.instagram.com/rgear.lft/?igsh=cHlsZHYwbXprMThm"
+              target="_blank"
+            >
+              Instagram
+            </a>
+          </button>
+        </div>
+        <a href="#" class="custom-link">Conheça os desenvolvedores</a>
+      </div>
+    </footer>
+ 
+    <!-- 6. Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../js/change-password.js"></script>
+  </body>
+</html>

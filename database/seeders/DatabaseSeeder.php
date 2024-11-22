@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
          
-        /* $this->call(RoleSeeder::class); */
-        /*  $this->call([ResearchSeeder::class]); */
+         /* $this->call(RoleSeeder::class); 
+          $this->call([ResearchSeeder::class]);  */
     }
 }
