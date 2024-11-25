@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,22 +13,33 @@ class UserController extends Controller
         $users = User::paginate(10); // Adiciona paginação
         return response()->json($users);
     }
+    public function create()
+    {
+        $roles = Role::where("name", "!=", "Administrador")->get();
 
+
+        return view('dashboard', [
+            "title" => "Cadastro de usuários",
+            "roles" => $roles
+        ]);
+    }
     public function store(Request $request)
     {
-        $request->validate([
+    
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'cpf' => 'required|string|max:11|unique:users',
             'password' => 'required|string|min:6',
             'role_id' => 'required|exists:roles,id',
         ]);
+        
 
-        $userData = $request->validated();
-        $userData['password'] = bcrypt($userData['password']); // Criptografa a senha
+        $validated['password'] = bcrypt($validated['password']); // Criptografa a senha
+        $validated['status'] = 'active'; //Status padrão de ativo
 
-        $user = User::create($userData);
-        return response()->json($user, 201);
+        User::create($validated);
+        return redirect()->back()->with('success','Usuário cadastrado com sucesso!');
     }
 
     public function show($id)

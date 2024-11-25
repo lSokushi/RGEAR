@@ -34,5 +34,33 @@ aside .nav-link:hover {
 }
 
 button {
-    background-color: #3A57E8;
+  background-color: #3A57E8;
+  width: 20.0rem;
+  height: 4.8rem;
+}
+.tip-password {
+  color: #5A8AB6;
+}
+
+.button__exit {
+  background-color: #484747;
+  transition: opacity 0.3s ease;
+}
+.button__exit:hover {
+  opacity: .8;
+}
+.table thead {
+  border-bottom: none;
+}
+
+.pagination-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.0rem;
+}
+
+.pagination .page-link {
+  font-size: 1.45rem;
+  padding: 0.75rem 1rem;
 }
