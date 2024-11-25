@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\DashboardPublieditController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RepositorioController;
 use App\Http\Controllers\DashboardPublicationController;
@@ -6,6 +8,7 @@ use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SobreNosController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
 Route::get("/", [IndexController::class, "index"])->name("index");
@@ -37,3 +40,11 @@ Route::prefix('dashboard-publication')->middleware("auth")->group(function () {
 Route::get('repositorio', [RepositorioController::class, 'index'])->name("repositorio");
 
 Route::resource('developers', DeveloperController::class)->middleware('auth');
+
+Route::get('usuarios-cadastrados', [DashboardUserController::class, 'index'])->name('editaruser');
+Route::get('publicacao-cadastradas', [DashboardPublieditController::class, 'index'])->name('editarpubli');
+
+Route::prefix('dashboard-user')->middleware("auth")->group(function () {
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/store', [UserController::class, 'store'])->name('user.store');
+});
