@@ -25,7 +25,7 @@
           </p>
           <div class="collapse mb-4" id="collapseExample">
             <div class="card card-body border border-0">
-              <a href="{{route("dashboard")}}" onclick="showSection('usuario')">
+              <a href="#" onclick="showSection('usuario')">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-person-add" viewBox="0 0 16 16">
                   <path
@@ -130,6 +130,7 @@
               <div class="col-md-3">
                 <fieldset class="mb-3">
                   <legend class="col-form-label pt-0 fs-3">Tipo de Usuário</legend>
+               
                   @foreach ($roles as $role)
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="role_id" id="{{$role->name}}" value="{{$role->id}}"

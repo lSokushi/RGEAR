@@ -48,3 +48,6 @@ Route::prefix('dashboard-user')->middleware("auth")->group(function () {
     Route::get('/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/store', [UserController::class, 'store'])->name('user.store');
 });
+
+
+    

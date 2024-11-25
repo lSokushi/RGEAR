@@ -21,14 +21,14 @@
                         Início
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('sobrenos') ? 'active' : '' }}">
-                    <a href="{{ route('sobrenos') }}" class="custom-link" aria-label="Ir para a página Sobre Nós">
-                        Sobre Nós
-                    </a>
-                </li>
                 <li class="{{ request()->routeIs('repositorio') ? 'active' : '' }}">
                     <a href="{{ route('repositorio') }}" class="custom-link" aria-label="Ir para o repositório">
                         Repositório
+                    </a>
+                </li>
+                <li class="{{ request()->routeIs('sobrenos') ? 'active' : '' }}">
+                    <a href="{{ route('sobrenos') }}" class="custom-link" aria-label="Ir para a página Sobre Nós">
+                        Sobre Nós
                     </a>
                 </li>
                 <li class="{{ request()->routeIs('login') ? 'active' : '' }}">

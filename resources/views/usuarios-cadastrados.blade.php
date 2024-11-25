@@ -24,7 +24,7 @@
           </p>
           <div class="collapse mb-4" id="collapseExample">
             <div class="card card-body border border-0">
-              <a href="{{route("dashboard")}}"" onclick="showSection('usuario')">
+              <a href="{{route("dashboard")}}" onclick="showSection('usuario')">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-person-add" viewBox="0 0 16 16">
                   <path
