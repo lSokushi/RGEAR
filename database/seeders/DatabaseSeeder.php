@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
+/* 
         $adminRole = Role::where("name", "=" ,"Administrador")->first();
         $supervisorRole = Role::where("name", "=" ,"Supervisor")->first();
         $UsuarioRole = Role::where("name", "=" ,"Supervisor")->first();
@@ -43,10 +43,11 @@ class DatabaseSeeder extends Seeder
             "role_id" => $UsuarioRole->id,
             "status" => "active",	
             "password"=> Hash::make("333"),
-        ]);
+        ]); */
 
          
          /* $this->call(RoleSeeder::class); 
           $this->call([ResearchSeeder::class]);  */
+          $this->call(EventSeeder::class);
     }
 }

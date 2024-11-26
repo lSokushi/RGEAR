@@ -136,8 +136,8 @@
                 <p class="text-muted role">Programador Full Stack</p>
                 <p class="mini-bio">"Explorando novas tecnologias para criar o futuro."</p>
                 <div class="skills">
-                    <span class="badge bg-primary">Java</span>
-                    <span class="badge bg-warning text-dark">Spring</span>
+                    <span class="badge bg-primary">JavaScript</span>
+                    <span class="badge bg-warning text-dark">HTML/CSS</span>
                     <span class="badge bg-success">MySQL</span>
                 </div>
                 <div class="social-links d-flex justify-content-center mt-3">

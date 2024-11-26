@@ -1,15 +1,11 @@
-<!-- 1. Layout Header with Title and CSS Link -->
 <x-main-layout title="RGEAR | Repositorios">
   <link rel="stylesheet" href="{{asset('/css/repositorio.css')}}" />
-
-  <!-- 2. Main Title Section -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
   <main>
     <div class="repo">
       <h1 class="repo"><b>Repositório</b></h1>
     </div>
   </main>
-
-  <!-- 3. Search Container -->
   <div>
     <div class="container-wrapper">
       <div class="container">
@@ -21,24 +17,51 @@
     </div>
   </div>
 
-  <!-- 4. Filter Button -->
   <button class="filter-btn">Filtro</button>
 
-  <!-- 5. Article Section: Artigos -->
+
   <section>
     <article>
       <div class="title-artigos">
         <h1><u><b>Artigos</b></u></h1>
       </div>
-      <div class="article-container">
-        <div class="article-box">
-          <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</figure>
+      <div class="articles-container">
+      @foreach ($publications as $publication)
+    <div class="article-box w-100">
+        {{-- Exibe apenas a primeira imagem --}}
+        @if (!empty($publication->images))
+            @foreach (json_decode($publication->images) as $key => $image)
+                @if ($key == 0)
+                    <img class="image-placeholder img-fluid" src="{{ asset("storage/$image") }}" alt="Imagem da publicação">
+                @endif
+            @endforeach
+        @endif
+
+        <div class="title-cards-art">
+            <h2>{{ $publication['title'] }}</h2>
+        </div>
+        <div class="p-3 w-100">
+          {{-- Limita o texto do resumo a 150 caracteres --}}
+          <p class="w-100">{{ Str::limit($publication['resume'], 30) }}</p>
+          <p class="info-cards">
+              <small>{{ $publication['author'] }} | Atualizado {{ $publication['updated_at']->diffForHumans() }}</small>
+          </p>
+
+        </div>
+    </div>
+@endforeach
+
+</div>
+
+    </article>
+    <!-- 
+        <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</figure>
           <div class="title-cards-art">
             <h2>Título Artigo</h2>
           </div>
           <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
             a little bit longer.</p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p> 
         </div>
         <div class="article-box">
           <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</figure>
@@ -67,18 +90,16 @@
             a little bit longer.</p>
           <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
         </div>
-      </div>
-      <nav class="link-vermais">
-        <ul>
-          <a href="ver mais"><u>
-              <h2>Ver mais</h2>
-            </u></a>
-        </ul>
-      </nav>
+      </div>-->
+    <!-- <nav class="link-vermais">
+      <ul>
+        <a href="ver mais"><u>
+            <h2>Ver mais</h2>
+          </u></a>
+      </ul>
+    </nav>
     </article>
   </section>
-
-  <!-- 6. Article Section: Jogos -->
   <section>
     <article>
       <div class="title-jogos">
@@ -130,15 +151,7 @@
         </ul>
       </nav>
     </article>
-  </section>
-
-  <!-- 7. Article Section: Modelagens -->
-   @foreach ($publicacoes as $publicacao)
-    <x-artigo-card :title="$publicacao['title']" :image="$publicacao['image']" :summary="$publicacao['description']" :caption="$publicacao['image_caption']" :author="$publicacao['author']" :updatedAt="$publicacao['updated_at']->diffForHumans()"></x-artigo-card>
-   @endforeach
-  
-
-  <!-- 8. Article Section: Eventos -->
+  </section> -->
   <section>
     <article>
       <div class="title-eventos">
@@ -191,9 +204,7 @@
       </nav>
     </article>
   </section>
-
-  <!-- 9. Article Section: Outros -->
-  <section class="outros">
+  <!-- <section class="outros">
     <div class="title-outros">
       <h1><u><b>Outros</b></u></h1>
     </div>
@@ -222,5 +233,5 @@
           </u></a>
       </ul>
     </nav>
-  </section>
+  </section> -->
 </x-main-layout>
