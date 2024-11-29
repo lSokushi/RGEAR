@@ -7,7 +7,7 @@ class RepositorioController extends Controller
 {
     public function index()
     {
-        $publications = Publication::orderBy("created_at", "desc")->limit(5)->get();
+        $publications = Publication::orderBy("created_at", "desc")->limit(4)->get();
 
         // Retorna a view com a variável $publicacoes
         return view("repositorio", [

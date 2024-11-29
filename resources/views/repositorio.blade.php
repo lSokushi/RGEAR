@@ -159,40 +159,52 @@
       </div>
       <div class="article-container2">
         <div class="article-box">
-          <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</figure>
+          <img class="image-placeholder img-fluid" src="https://placehold.co/294x276" alt="Avatar"></img>
           <div class="title-cards-art">
             <h2>Título Artigo</h2>
           </div>
-          <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
-            a little bit longer.</p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          <div class="w-100 p-3">
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
+              a little bit longer.</p>
+            <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          </div>
+          
         </div>
         <div class="article-box">
-          <figure class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</figure>
+          <img class="image-placeholder img-fluid" src="https://placehold.co/294x276" alt="Avatar"></img>
           <div class="title-cards-art">
             <h2>Título Artigo</h2>
           </div>
-          <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
-            a little bit longer.</p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          <div class="w-100 p-3">
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
+              a little bit longer.</p>
+            <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          </div>
+          
         </div>
         <div class="article-box">
-          <div class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</div>
+          <img class="image-placeholder img-fluid" src="https://placehold.co/294x276" alt="Avatar"></img>
           <div class="title-cards-art">
             <h2>Título Artigo</h2>
           </div>
-          <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
-            a little bit longer.</p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          <div class="w-100 p-3">
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
+              a little bit longer.</p>
+            <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          </div>
+
         </div>
         <div class="article-box">
-          <div class="image-placeholder" src="https://placehold.co/294x276" alt="Avatar">Imagem <br> 294x276</div>
+          <img class="image-placeholder img-fluid" src="https://placehold.co/294x276" alt="Avatar"></img>
           <div class="title-cards-art">
             <h2>Título Artigo</h2>
           </div>
-          <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
-            a little bit longer.</p>
-          <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          <div class="w-100 p-3">
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content. This content is
+              a little bit longer.</p>
+            <p class="info-cards"><small>Autor | last updated 3 mins ago</small></p>
+          </div>
+          
         </div>
       </div>
       <nav class="link-vermais">
