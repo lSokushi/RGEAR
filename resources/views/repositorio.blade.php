@@ -19,6 +19,27 @@
 
   <button class="filter-btn">Filtro</button>
 
+<!-- Search Bar Section -->
+<div class="search-section">
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Pesquisar...">
+    <button class="search-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="20" height="20">
+        <path d="M21 21l-5.2-5.2M16.7 10.3a6.4 6.4 0 1 1-12.8 0 6.4 6.4 0 0 1 12.8 0Z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Content Area for Articles -->
+<div class="content-section">
+  <h2>Artigos</h2>
+  <div class="article">
+    <!-- Example Article -->
+    <p>Adicione os artigos aqui...</p>
+  </div>
+</div>
+
 
   <section>
     <article>
