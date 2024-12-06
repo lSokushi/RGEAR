@@ -10,6 +10,7 @@ use App\Http\Controllers\SobreNosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArticleController;
 
 Route::get("/", [IndexController::class, "index"])->name("index");
 
@@ -49,5 +50,6 @@ Route::prefix('dashboard-user')->middleware("auth")->group(function () {
     Route::post('/store', [UserController::class, 'store'])->name('user.store');
 });
 
-
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
     
