@@ -1,6 +1,7 @@
 <x-main-layout title="RGEAR">
     <link rel="stylesheet" href="{{ asset('/css/index.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.6.12/splide.min.css">
 
     <main>
         <!-- 1. Headline Section -->
@@ -13,10 +14,7 @@
 
         <!-- 2. About Section -->
         <section class="about-section">
-            <div class="about-container">
-                {{-- <header class="about-header">
-                    <h2 class="about-title">Sobre o RGEAR</h2>
-                </header> --}}
+            <div class="container about-container">
                 <article class="about-content">
                     <p class="about-text">
                         O RGEAR foi criado em 2018 através do Projeto Robótica Educacional IFBA Lauro de Freitas na
@@ -82,7 +80,7 @@
         <section class="articles">
             <h1 class="main-artigos main-artigos__text">Artigos em Destaque</h1>
             <div class="cards-area">
-                @foreach ($publications as $key => $publication)
+                @forelse ($publications as $key => $publication)
                     <x-index-card 
                         class="card-principal" 
                         :index="$key + 1" 
@@ -90,30 +88,44 @@
                         :resume="$publication['resume']"
                         :author="$publication['author']" 
                         :year="$publication['year']" 
-                        :image="json_decode($publication['images'])[0]"
+                        :image="optional(json_decode($publication['images']))[0] ?? asset('images/default-article.jpg')"
                     ></x-index-card>
-                @endforeach
+                @empty
+                    <p class="no-data">Nenhum artigo disponível no momento.</p>
+                @endforelse
             </div>
-            <a class="ver-mais" href="#">
-                <h4 class="main-artigos main-artigos__text">ver mais</h4>
+            @if($publications->isNotEmpty())
+            <a class="ver-mais" href="{{ route('repositorio') }}">
+                <h4 class="main-artigos main-artigos__text">Ver mais</h4>
             </a>
+            
+            
+            @endif
         </section>
 
-        <!-- 5. Featured Events Section -->
-        <section class="events">
-            <h1 class="main-artigos main-artigos__text">Eventos em Destaque</h1>
-            <div class="splide" aria-label="Splide Basic HTML Example">
+      <!-- 5. Featured Events Section -->
+      <section class="events">
+        <h1 class="main-artigos main-artigos__text">Eventos em Destaque</h1>
+    
+        @if($events->isNotEmpty())
+            <div class="splide" aria-label="Eventos em Destaque">
                 <div class="splide__track">
                     <ul class="splide__list">
                         @foreach ($events as $event)
                             <li class="splide__slide">
                                 <div class="card-carrosel">
                                     <div class="container texto-cards">
-                                        <h4 class="titulo-artigo">{{ $event->title }}</h4>
-                                        <p>{{ $event->description }}</p>
+                                        {{-- Exibe a imagem do evento ou uma imagem padrão --}}
+                                        <img class="event-image img-fluid" 
+                                             src="{{ $event->image ? asset('storage/' . $event->image) : asset('img/events-default.webp') }}" 
+                                             alt="{{ $event->title }}">
+                                        <h4 class="titulo-artigo">
+                                            <a href="{{ route('events.details', $event->id) }}">{{ $event->title }}</a>
+                                        </h4>
+                                        <p>{{ Str::limit($event->description, 100, '...') }}</p>
                                         <p>
                                             <small>{{ $event->location }} | 
-                                            {{ date_format(date_create($event->date), 'd/m/Y') }}</small>
+                                            {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}</small>
                                         </p>
                                     </div>
                                 </div>
@@ -122,81 +134,34 @@
                     </ul>
                 </div>
             </div>
-        </section>
-    </main>
-
-
-    <!-- 4. Featured Articles Section -->
-<section class="articles">
-    <h1 class="main-artigos main-artigos__text">Artigos em Destaque</h1>
-    <div class="cards-area">
-        @forelse ($publications as $key => $publication)
-            <x-index-card 
-                class="card-principal" 
-                :index="$key + 1" 
-                :title="$publication['title']" 
-                :resume="$publication['resume']"
-                :author="$publication['author']" 
-                :year="$publication['year']" 
-                :image="optional(json_decode($publication['images']))[0] ?? asset('images/default-article.jpg')"
-            ></x-index-card>
-        @empty
-            <p class="no-data">Nenhum artigo disponível no momento.</p>
-        @endforelse
-    </div>
-    @if($publications->isNotEmpty())
-        <a class="ver-mais" href="{{ route('articles.index') }}">
-            <h4 class="main-artigos main-artigos__text">Ver mais</h4>
-        </a>
-    @endif
-</section>
-
-<!-- 5. Featured Events Section -->
-<section class="events">
-    <h1 class="main-artigos main-artigos__text">Eventos em Destaque</h1>
-    @if($events->isNotEmpty())
-        <div class="splide" aria-label="Splide Basic HTML Example">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    @foreach ($events as $event)
-                        <li class="splide__slide">
-                            <div class="card-carrosel">
-                                <div class="container texto-cards">
-                                    <h4 class="titulo-artigo">{{ $event->title }}</h4>
-                                    <p>{{ $event->description }}</p>
-                                    <p>
-                                        <small>{{ $event->location }} | 
-                                        {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @else
-        <p class="no-data">Nenhum evento disponível no momento.</p>
-    @endif
-</section>
-
-
-    <!-- 6. Scripts -->
-    <script>
-        new Splide(".splide", {
-            perPage: 4,
-            type: "loop",
-            gap: "0.8rem",
-            focus: "center",
+        @else
+            <p class="no-data">Nenhum evento disponível no momento.</p>
+        @endif
+    </section>
+    
+<!-- 6. Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.6.12/splide.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Splide('.splide', {
+            type: 'loop',
+            perPage: 3,
+            perMove: 1,
+            gap: '1rem',
+            autoplay: true,
+            focus: 'center',
             drag: true,
             pagination: false,
             breakpoints: {
                 1200: { perPage: 3 },
-                900: { perPage: 2 },
-                600: { perPage: 1 },
+                1024: { perPage: 2 },
+                768: { perPage: 1 },
                 480: { perPage: 1 },
             },
         }).mount();
-    </script>
-    <script src="{{ asset('js\index.js') }}?v={{ time() }}" defer></script>
+    });
+</script>
+
+<script src="{{ asset('js/index.js') }}?v={{ time() }}" defer></script>
 </x-main-layout>
+

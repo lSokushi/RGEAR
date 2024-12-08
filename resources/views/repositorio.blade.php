@@ -39,40 +39,42 @@
     <p>Adicione os artigos aqui...</p>
   </div>
 </div>
-
-
-  <section>
-    <article>
+<section>
+  <article>
       <div class="title-artigos">
-        <h1><u><b>Artigos</b></u></h1>
+          <h1><u><b>Artigos</b></u></h1>
       </div>
       <div class="articles-container">
-      @foreach ($publications as $publication)
-    <div class="article-box w-100">
-        {{-- Exibe apenas a primeira imagem --}}
-        @if (!empty($publication->images))
-            @foreach (json_decode($publication->images) as $key => $image)
-                @if ($key == 0)
-                    <img class="image-placeholder img-fluid" src="{{ asset("storage/$image") }}" alt="Imagem da publicação">
-                @endif
-            @endforeach
-        @endif
+          @if(isset($publications) && $publications->isNotEmpty())
+              @foreach ($publications as $publication)
+                  <div class="article-box w-100">
+                      {{-- Exibe apenas a primeira imagem --}}
+                      @if (!empty($publication->images))
+                          @foreach (json_decode($publication->images) as $key => $image)
+                              @if ($key == 0)
+                                  <img class="image-placeholder img-fluid" src="{{ asset("storage/$image") }}" alt="Imagem da publicação">
+                              @endif
+                          @endforeach
+                      @endif
 
-        <div class="title-cards-art">
-            <h2>{{ $publication['title'] }}</h2>
-        </div>
-        <div class="p-3 w-100">
-          {{-- Limita o texto do resumo a 150 caracteres --}}
-          <p class="w-100">{{ Str::limit($publication['resume'], 30) }}</p>
-          <p class="info-cards">
-              <small>{{ $publication['author'] }} | Atualizado {{ $publication['updated_at']->diffForHumans() }}</small>
-          </p>
-
-        </div>
-    </div>
-@endforeach
-
-</div>
+                      <div class="title-cards-art">
+                          <h2>{{ $publication['title'] }}</h2>
+                      </div>
+                      <div class="p-3 w-100">
+                          {{-- Limita o texto do resumo a 150 caracteres --}}
+                          <p class="w-100">{{ Str::limit($publication['resume'], 30) }}</p>
+                          <p class="info-cards">
+                              <small>{{ $publication['author'] }} | Atualizado {{ $publication['updated_at']->diffForHumans() }}</small>
+                          </p>
+                      </div>
+                  </div>
+              @endforeach
+          @else
+              <p class="no-data">Nenhum artigo encontrado.</p>
+          @endif
+      </div>
+  </article>
+</section>
 
     </article>
     <!-- 

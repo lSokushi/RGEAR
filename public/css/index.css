@@ -42,8 +42,8 @@ body {
 .about-section {
     background-color: #ffffff;
     padding: 60px 20px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
+    border-width: 1px 0;
 }
 
 .about-container {
@@ -129,6 +129,38 @@ body {
 .feature-icon {
     font-size: 3em;
     color: #0073e6;
+}
+
+.card-carrosel {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-carrosel h4 a {
+    text-decoration: none;
+    color: #0073e6;
+}
+
+.card-carrosel p {
+    color: #555;
+    margin: 10px 0;
+}
+
+.no-data {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.event-image {
+    max-width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 /* 6. Responsiveness */
