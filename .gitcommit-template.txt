@@ -1,0 +1,9 @@
+# Tipo: [feat, fix, chore, docs, style, refactor, test, ci]
+# Exemplo de tipos: ✨ Feat, 🐛 Fix, 🔧 Chore
+# Descrição curta: (o que foi feito?)
+#
+# Exemplo:
+# ✨ Feat: adicionada funcionalidade de busca
+#
+# Descrição detalhada (opcional): (por que ou como foi feito?)
+#

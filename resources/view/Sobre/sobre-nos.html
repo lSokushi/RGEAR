@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - RGEAR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">RGEAR</h1>
+            <ul class="flex space-x-4 text-white">
+                <li><a href="#historia" class="hover:underline">História</a></li>
+                <li><a href="#objetivos" class="hover:underline">Objetivos</a></li>
+                <li><a href="#equipe" class="hover:underline">Equipe</a></li>
+                <li><a href="#areas" class="hover:underline">Áreas de Atuação</a></li>
+                <li><a href="#contato" class="hover:underline">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sobre o RGEAR -->
+    <section id="historia" class="py-10 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">História</h2>
+            <p>Fundado em <strong>2018</strong>, o <strong>RGEAR</strong> nasceu no Instituto Federal da Bahia (IFBA) com o objetivo de promover a inovação científica e tecnológica...</p>
+            <ul class="list-disc pl-6 mt-4">
+                <li><strong>2018:</strong> Fundação do grupo e início das oficinas de robótica educacional.</li>
+                <li><strong>2019-2020:</strong> Participação na SNCT...</li>
+                <li><strong>2023:</strong> Expansão para pesquisas em IoT e economia circular.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section id="objetivos" class="py-10 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">Objetivos</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold">Tecnológicos</h3>
+                    <p>Criar soluções inovadoras em robótica, automação e inteligência artificial.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold">Educacionais</h3>
+                    <p>Promover o ensino prático de ciência e tecnologia por meio de projetos interativos.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold">Sociais</h3>
+                    <p>Incorporar sustentabilidade e impacto social em todas as suas iniciativas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section id="equipe" class="py-10 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">Equipe</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/150" alt="Foto de Joacir" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Joacir Simões Ferreira</h5>
+                            <p class="card-text">Doutorado em Robótica Educacional, Inteligência Artificial.</p>
+                            <a href="#" class="btn btn-primary">Ver Currículo Lattes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/150" alt="Foto de Dermeval" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Dermeval Heitor Souza Gritta</h5>
+                            <p class="card-text">Mestrado em Sustentabilidade, Economia Circular.</p>
+                            <a href="#" class="btn btn-primary">Ver Currículo Lattes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="py-10 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">Galeria</h2>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Foto 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Foto 2">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

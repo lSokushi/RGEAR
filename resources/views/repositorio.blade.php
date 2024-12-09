@@ -239,7 +239,7 @@
       </nav>
     </article>
   </section>
-  <!-- <section class="outros">
+ <section class="outros">
     <div class="title-outros">
       <h1><u><b>Outros</b></u></h1>
     </div>
@@ -268,5 +268,5 @@
           </u></a>
       </ul>
     </nav>
-  </section> -->
+  </section>
 </x-main-layout>
