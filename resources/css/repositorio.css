@@ -1,216 +1,177 @@
-/* Importação global */
-@import url(global.css);
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* Cabeçalho */
-header {
-  background-image: linear-gradient(#0d731c, #075913);
-  height: 12.9rem;
-}
+@import url("global.css");
 
-/* Títulos */
-.title, .title-artigos, .title-jogos, .title-model, .title-eventos, .title-outros {
-  font-size: 3.5rem;
-  margin-top: 100px;
-  margin-left: 120px;
-}
-
-/* Links personalizados */
-.custom-link {
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-}
-
-.custom-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -.3rem;
-  width: 100%;
-  height: .3rem;
-  background-color: #28a745;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.custom-link:hover::after {
-  transform: scaleX(1);
-}
-
-/* Corpo da página */
+/* Estilos gerais */
 body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
   margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
-/* Títulos de segmentos */
-.repo {
-  position: absolute;
-  left: 125px;
-  margin-top: 30px;
-}
-
-/* Barra de pesquisa */
-.container-wrapper {
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  background-color: #075913;
-  padding: 12px;
-  border-radius: 8px;
-  height: 54px;
-  border: 1px solid #0a0a0a;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 650px;
-  margin: 0 auto;
-  transition: background-color 0.3s;
-}
-
-.container:hover {
-  background-color: #075913cb;
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  width: 100%;
-  border: 1px solid #0a0a0a;
-  padding: 9px 12px;
-}
-
-.input-wrapper input {
-  flex-grow: 1;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  width: 100%;
-}
-
-.input-wrapper input:focus-visible {
-  outline: none;
-}
-
-.container i {
-  color: #fff;
-  margin-right: 15px;
-  transform: translateY(12%);
-  cursor: pointer;
-}
-
-/* Botão de filtro */
-.filter-btn {
-  padding: 5px 15px;
-  border-radius: 10px;
-  border: 1px solid gray;
-  cursor: pointer;
-  background: none;
-  margin-left: auto;
-  margin-right: 10px;
-  transition: background-color 0.3s;
-}
-
-.filter-btn:hover {
-  background-color: #838282;
-}
-
-/* Containers de Artigos */
-.articles-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-evenly;
-  margin: 20px 0;
-}
-
-.article-box {
-  flex: 1 1 calc(33.333% - 20px);
-  max-width: 300px;
+/* Cabeçalho principal */
+main {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 2rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.image-placeholder {
+main h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Barra de pesquisa */
+.max-w-4xl {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"], input[type="search"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Botão de filtro */
+.text-right button {
+  margin-top: 1rem;
+}
+
+/* Conteúdo dos artigos */
+.articles-container, .article-container2, .outer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.article-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.article-box img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.article-box h2 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.article-box p {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.article-box small {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* Títulos das seções */
+.title-jogos, .title-eventos, .title-outros {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.title-jogos h1, .title-eventos h1, .title-outros h1 {
+  font-size: 2rem;
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Outros */
+.outer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.outro {
+  display: block;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  max-width: 250px;
+  margin: auto;
+}
+
+.outro img {
   width: 100%;
   height: auto;
   border-bottom: 1px solid #ddd;
 }
 
-.title-cards-art {
-  padding: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-/* Outros estilos */
-.outer-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20rem;
-  padding: 2rem;
-  margin-top: 20px;
-  margin-bottom: 250px;
-}
-
-.outro {
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid #000;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 600px;
-  height: auto;
-}
-
-.outro img {
-  width: 100%;
-}
-
 .outer-info {
   padding: 1rem;
-  background-color: #fff;
-  text-align: center;
 }
 
 .outer-info h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .articles-container, .outer-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .article-box, .outro {
-    width: 90%;
-  }
-
-  .repo {
-    left: 20px;
-    margin-top: 30px;
-  }
-}
-
-@media (max-width: 576px) {
-  .container {
-    max-width: 90%;
-  }
-
-  .filter-btn {
-    margin-top: 20px;
-  }
+.outer-info p {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 0.5rem;
 }

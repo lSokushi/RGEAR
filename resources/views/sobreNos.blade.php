@@ -1,153 +1,176 @@
 <x-main-layout title="RGEAR">
-  <link rel="stylesheet" href="{{ asset('/css/sobre-nos.css') }}" />
-  <link rel="stylesheet" href="{{ asset('/public/css/') }}" />
 
-  <main>
-      <!-- 1. Seção: Quem Somos -->
-      <section class="mt-5 container">
-          <h2 class="mb-3 text-primary">Quem Somos</h2>
-          <p class="lead">
-              O <strong>RGEAR</strong> (Grupo de Pesquisa em Engenharia, Inteligência Artificial e Robótica Aplicadas) foi fundado em <strong>2018</strong>, no Instituto Federal da Bahia (IFBA), com o objetivo de integrar ciência, tecnologia e educação.
-          </p>
-          <p>
-              Desde sua criação, o grupo tem ampliado suas áreas de atuação, incorporando novas tecnologias e promovendo impacto social por meio de projetos interdisciplinares e sustentáveis.
-          </p>
-          <h3 class="mt-4 text-secondary">Linha do Tempo - Marcos Importantes:</h3>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                  <strong>2018:</strong> Fundação do grupo e início das oficinas de robótica educacional.
-              </li>
-              <li class="list-group-item">
-                  <strong>2019-2020:</strong> Participação ativa na <strong>Semana Nacional de Ciência e Tecnologia (SNCT)</strong> com palestras e oficinas sobre Arduino e ThinkerCad.
-              </li>
-              <li class="list-group-item">
-                  <strong>2023:</strong> Expansão para pesquisas em <strong>Internet das Coisas (IoT)</strong> e <strong>economia circular</strong>, fortalecendo a integração entre tecnologia e sustentabilidade.
-              </li>
-          </ul>
-      </section>
+    <!-- 1. Importação de Estilos -->
+    <link rel="stylesheet" href="{{ asset('/css/about-us.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/css/sobre-nos.css') }}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-      <!-- 2. Seção: Missão, Objetivos e Valores -->
-      <section class="mt-5 container">
-          <h2 class="mb-3 text-primary">Missão, Objetivos e Valores</h2>
+    <!-- 2. Seção: Quem Somos -->
+    <section class="quem-somos py-5 position-relative">
+        <div class="container">
+            <h1 class="section-title" id="quem-somos-title">Quem Somos</h1>
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start" id="quem-somos-text">
+                    <p class="lead destaque">
+                        O <strong>RGEAR</strong> (Grupo de Pesquisa em Engenharia, Inteligência Artificial e Robótica
+                        Aplicadas) foi fundado em 2018 no <strong>IFBA</strong>, com o objetivo de integrar ciência,
+                        tecnologia e educação.
+                    </p>
+                    <p class="quem-somos-text mt-3">
+                        Desde sua criação, o grupo tem ampliado suas áreas de atuação, incorporando novas tecnologias e
+                        promovendo impacto social por meio de projetos interdisciplinares e sustentáveis.
+                    </p>
+                    <a href="#timeline" class="btn btn-primary mt-4">Saiba Mais</a>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="visual-element" id="quem-somos-visual">
+                        <img src="{{ asset('/images/robot-hand.svg') }}" class="img-fluid" alt="Robótica e IA">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <div class="mb-4">
-              <h3 class="text-secondary">Missão</h3>
-              <p>
-                  Promover o desenvolvimento de soluções inovadoras em robótica, automação e inteligência artificial, integrando educação e sustentabilidade para transformar o futuro.
-              </p>
-          </div>
+    <!-- 3. Linha do Tempo -->
+    <section class="timeline-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title text-primary">Linha do Tempo - Marcos Importantes</h2>
+            <div class="timeline position-relative">
+                <div class="timeline-line"></div>
+                @foreach ($timeline as $item)
+                    <div class="timeline-item d-flex align-items-center mb-5 position-relative">
+                        <div class="timeline-content bg-white shadow-lg p-4 rounded-4"
+                            data-aos="{{ $loop->odd ? 'fade-right' : 'fade-left' }}">
+                            <h3 class="text-primary fw-bold mb-3">{{ $item['year'] }}</h3>
+                            <p class="text-muted">{{ $item['description'] }}</p>
+                        </div>
+                        <div
+                            class="timeline-marker bg-{{ $item['color'] }} text-white text-center rounded-circle shadow">
+                            <strong>{{ $item['year'] }}</strong>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
-          <div class="mb-4">
-              <h3 class="text-secondary">Objetivos</h3>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                      <strong>Tecnológicos:</strong> Desenvolver ferramentas e métodos avançados em inteligência artificial, robótica e IoT.
-                  </li>
-                  <li class="list-group-item">
-                      <strong>Educacionais:</strong> Capacitar jovens e profissionais por meio de oficinas, minicursos e materiais didáticos.
-                  </li>
-                  <li class="list-group-item">
-                      <strong>Sociais:</strong> Incentivar a sustentabilidade e o impacto social em todos os projetos desenvolvidos.
-                  </li>
-              </ul>
-          </div>
 
-          <div>
-              <h3 class="text-secondary">Valores</h3>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                      <strong>Inovação:</strong> Buscar soluções tecnológicas criativas e eficientes.
-                  </li>
-                  <li class="list-group-item">
-                      <strong>Sustentabilidade:</strong> Integrar práticas que respeitem o meio ambiente.
-                  </li>
-                  <li class="list-group-item">
-                      <strong>Colaboração:</strong> Trabalhar em equipe e construir redes de conhecimento.
-                  </li>
-              </ul>
-          </div>
-      </section>
+    {{-- <!-- 3. Equipe de Pesquisadores -->
+        <section class="equipe-pesquisadores mt-5 container">
+            <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
+            <div class="row g-4">
+                @foreach ($pesquisadores as $pesquisador)
+                    <div class="col-md-4" data-aos="fade-up">
+                        <div class="card shadow-sm border-0 h-100">
+                            <img src="{{ asset($pesquisador->image) }}" alt="{{ $pesquisador->name }}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $pesquisador->name }}</h5>
+                                <p class="card-text">{{ $pesquisador->bio }}</p>
+                                <a href="{{ $pesquisador->link }}" class="btn btn-primary">Saiba mais</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section> --}}
+    {{--         
+        <section class="equipe-pesquisadores mt-5 container">
+            <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
+            <div class="row g-4">
+                @foreach ($pesquisadores as $pesquisador)
+                    <div class="col-md-6 col-lg-4">
+                        <x-pesquisador-card 
+                            :name="$pesquisador->name" 
+                            :image="$pesquisador->image" 
+                            :bio="$pesquisador->bio" 
+                            :link="$pesquisador->link" 
+                            :direction="$loop->even ? 'end' : 'start'" 
+                        />
+                    </div>
+                @endforeach
+            </div>
+        </section>
+         --}}
 
-      <!-- 3. Seção: Equipe de Pesquisadores -->
-      <section class="mt-5 container">
-          <h2 class="mb-3 text-primary">Equipe de Pesquisadores</h2>
-          <div class="row g-4">
-              @foreach($pesquisadores as $pesquisador)
-                  <div class="col-md-4">
-                      <x-pesquisador-card
-                          :name="$pesquisador['name']"
-                          :image="$pesquisador['image']"
-                          :bio="$pesquisador['area_of_expertise']"
-                          :direction="$pesquisador['direction']"
-                          :link="$pesquisador['link']"
-                      />
-                  </div>
-              @endforeach
-          </div>
-      </section>
 
-      <!-- 4. Seção: Áreas de Atuação -->
-      <section class="mt-5 container">
-          <h2 class="mb-3 text-primary">Áreas de Atuação</h2>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                  <strong>Automação e Robótica Educacional:</strong> Desenvolvimento de robôs para ensino técnico, projetos em Arduino, ThinkerCad e outras ferramentas práticas.
-              </li>
-              <li class="list-group-item">
-                  <strong>Computação, Educação e Sustentabilidade:</strong> Pesquisa em economia circular e robótica sustentável, desenvolvimento de materiais didáticos interdisciplinares.
-              </li>
-              <li class="list-group-item">
-                  <strong>Engenharia e Inteligência Artificial Aplicada:</strong> Soluções tecnológicas com uso de IA e IoT, modelagem de sistemas inteligentes para análise de dados.
-              </li>
-          </ul>
-      </section>
+    <!-- 4. Equipe de Pesquisadores -->
+    <section class="equipe-pesquisadores mt-5 container">
+        <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
+        <div class="row g-4">
+            @foreach ($pesquisadores as $pesquisador)
+                <div class="col-md-4">
+                    <x-pesquisador-card :name="$pesquisador['name']" :image="$pesquisador['image']" :bio="$pesquisador['area_of_expertise']" :direction="$pesquisador['direction']"
+                        :link="$pesquisador['link']" />
+                </div>
+            @endforeach
+        </div>
+    </section>
 
-      <!-- 5. Seção: Galeria Multimídia -->
-      <section class="mt-5 container">
-          <h2 class="mb-3 text-primary">Galeria Multimídia</h2>
-          <div id="carouselGaleria" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                  <div class="carousel-item active">
-                      <img src="/path/to/image1.jpg" class="d-block w-100" alt="Projeto 1">
-                  </div>
-                  <div class="carousel-item">
-                      <img src="/path/to/image2.jpg" class="d-block w-100" alt="Projeto 2">
-                  </div>
-                  <div class="carousel-item">
-                      <img src="/path/to/image3.jpg" class="d-block w-100" alt="Projeto 3">
-                  </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselGaleria" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Anterior</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselGaleria" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Próximo</span>
-              </button>
-          </div>
-      </section>
+    <!-- 5. Áreas de Atuação -->
+    <section class="areas-atuacao mt-5 py-5">
+        <div class="container">
+            <h2 class="section-title text-primary mb-5">Áreas de Atuação</h2>
+            <div class="row g-4 justify-content-center">
+                @foreach ($areas as $area)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="area-card shadow-lg p-4 rounded-4 bg-white text-center position-relative overflow-hidden" data-aos="fade-up">
+                            <div class="area-icon mb-3 mx-auto d-flex justify-content-center align-items-center bg-primary text-white rounded-circle shadow-sm" style="width: 80px; height: 80px; font-size: 2rem;">
+                                <i class="fas {{ $area['icon'] }}"></i>
+                            </div>
+                            <h3 class="area-title text-dark fw-bold mb-2">{{ $area['title'] }}</h3>
+                            <p class="area-description text-muted">{{ $area['description'] }}</p>
+                            <div class="area-card-hover position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-0" style="transition: opacity 0.4s;"></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    
 
-      <!-- 6. Seção: Destaques e Conquistas -->
-      <section class="mt-5 container">
-          <h2 class="mb-3 text-primary">Destaques e Conquistas</h2>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>20+</strong> Projetos concluídos e em andamento.</li>
-              <li class="list-group-item"><strong>15+</strong> Artigos publicados.</li>
-              <li class="list-group-item"><strong>50+</strong> Estudantes capacitados.</li>
-              <li class="list-group-item"><strong>5+</strong> Eventos organizados.</li>
-          </ul>
-      </section>
 
-      <!-- 7. Seção: Call-to-Action -->
-      <section class="mt-5 text-center bg-light py-5">
-          <h2 class="mb-3 text-primary">Quer fazer parte?</h2>
-          <p>
-              “Quer ficar por dentro das nossas inovações e eventos? Cadastre-se e receba as últimas novidades sobre os projetos do RGEAR diretamente no seu e-mail.”
-          </p>
-          <a href="#" class="btn btn-primary btn-lg">Receber Atualizações</a>
-      </section>
-  </main>
+    <!-- 6. Destaques e Conquistas -->
+    <section class="destaques mt-5 py-5 bg-light position-relative overflow-hidden">
+        <div class="container">
+            <h2 class="section-title text-primary text-center mb-5">Destaques e Conquistas</h2>
+            <div class="row g-4 justify-content-center">
+                @foreach ($highlights as $highlight)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card destaque-card shadow-lg border-0 rounded-4 text-center p-4 bg-white position-relative overflow-hidden" data-aos="fade-up">
+                            <div class="d-flex justify-content-center align-items-center mx-auto mb-3 text-primary bg-light rounded-circle shadow-sm" style="width: 80px; height: 80px; font-size: 2rem;">
+                                <i class="bi {{ $highlight['icon'] }}"></i>
+                            </div>
+                            <h3 class="card-title text-dark fw-bold mb-2">{{ $highlight['value'] }}</h3>
+                            <p class="card-text text-muted">{{ $highlight['text'] }}</p>
+                            <div class="destaque-hover position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-0" style="transition: opacity 0.4s;"></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    
 
-  <script src="{{ asset('js/sobre-nos.js') }}"></script>
+    <!-- 7. Call to Action -->
+    <section class="cta-section py-5 text-center">
+        <div class="container">
+            <h2 class="section-title text-primary">Quer fazer parte?</h2>
+            <p>Cadastre-se e receba as últimas novidades sobre os projetos do RGEAR diretamente no seu e-mail.</p>
+            <a href="#" class="btn btn-primary btn-lg">Receber Atualizações</a>
+        </div>
+    </section>
+
+    <!-- 8. Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="{{ mix('js/sobre-nos.js') }}"></script>
+    <script>
+        AOS.init({
+    once: true, // As animações só acontecem uma vez
+    duration: 800, // Duração das animações
+    easing: "ease-out", // Suavização das animações
+});
+
+    </script>
 </x-main-layout>

@@ -7,10 +7,12 @@
         <!-- 1. Headline Section -->
         <section class="headline-section">
             <div class="container">
+                <img src="{{ asset('img/inicio.png') }}" alt="Imagem representativa do RGEAR" class="headline-image">
                 <h1>Bem-vindo ao RGEAR</h1>
                 <h2>Desde 2018, o RGEAR atua como um espaço de inovação e aprendizado...</h2>
             </div>
         </section>
+    
 
         <!-- 2. About Section -->
         <section class="about-section">

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Scroll Effect</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 200vh; /* Allow scroll */
+            background: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: url('/v3/envision/image.jpg?id=7b294443-0668-44e5-aef3-cd90e04b7f34&format=desktop') no-repeat center;
+            background-size: cover;
+        }
+
+        .text {
+            font-size: 5rem;
+            letter-spacing: 0.5rem;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+            opacity: 1;
+            position: absolute;
+            z-index: 2;
+            color: white;
+        }
+
+        .text.hidden {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        .reveal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 6rem;
+            color: white;
+            opacity: 0;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+            z-index: 3;
+        }
+
+        .reveal.visible {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            z-index: 1;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+            fill: white;
+        }
+
+        svg.zoomed {
+            transform: translate(-50%, -50%) scale(3);
+            opacity: 0;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="text" class="text">LIVE YOUR DREAM</div>
+        <svg id="mask-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="500" height="500">
+            <circle cx="50" cy="50" r="40" fill="white" />
+        </svg>
+        <div id="reveal" class="reveal">RGEAR</div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const textElement = document.getElementById('text');
+            const revealElement = document.getElementById('reveal');
+            const maskSvg = document.getElementById('mask-svg');
+
+            // Trigger zoom effect when scrolling down
+            if (scrollPosition > 50) {
+                textElement.classList.add('hidden');
+                revealElement.classList.add('visible');
+                maskSvg.classList.add('zoomed');
+            } else {
+                textElement.classList.remove('hidden');
+                revealElement.classList.remove('visible');
+                maskSvg.classList.remove('zoomed');
+            }
+        });
+    </script>
+</body>
+</html>

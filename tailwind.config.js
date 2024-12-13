@@ -8,6 +8,8 @@ export default {
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
+        './public/**/*.html',         // Para HTML estático
+        './src/**/*.{js,jsx,ts,tsx}', // Para React/Vue/etc.
     ],
     theme: {
         extend: {

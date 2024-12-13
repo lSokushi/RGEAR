@@ -176,3 +176,15 @@ body {
         margin-bottom: 20px;
     }
 }
+.headline-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    filter: grayscale(50%); /* Deixa a imagem 50% em tons de cinza */
+    transition: filter 0.3s ease; /* Animação ao aplicar ou remover o filtro */
+}
+
+.headline-image:hover {
+    filter: grayscale(0%); /* Remove o filtro ao passar o mouse */
+}

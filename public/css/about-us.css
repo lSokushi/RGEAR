@@ -1,108 +1,231 @@
-@import url(global.css);
-
-header {
-  background-image: linear-gradient(#0d731c, #075913);
-  height: 12.9rem;
-}
-
-a {
-  transition: 0.3s;
-}
-
-a:hover {
-  opacity: 0.8;
-}
-
-.title {
-  font-size: 3.8rem;
-}
-
-.article {
-  margin-top: 5.6rem;
-  gap: 6.4rem;
-}
-
-.highlight {
-  display: inline-block;
-  border-bottom: .5rem solid #1d571f;
-  width: 65%;
-  padding-bottom: .5rem;
-}
-
-.nav__links,
-footer {
-  background-color: var(--dark-green);
-}
-
-.article {
-  margin-top: 10.0rem;
-}
-
-.custom-link {
-  color: var(--white);
-  text-decoration: none;
+/* 1. Estilos Gerais */
+.section-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #007bff;
+  margin-bottom: 2rem;
   position: relative;
 }
 
-.custom-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -.3rem;
-  width: 100%;
-  height: .3rem;
-  background-color: #28a745;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+.lead {
+  font-size: 1.25rem;
+  color: #6c757d;
+  line-height: 1.8;
 }
 
-.custom-link:hover::after {
-  transform: scaleX(1);
-}
-
-.pe-3 {
-    padding-right: 1rem;
-}
-
-.marginTop {
-  margin-top: 8.0rem;
-}
-
-.nav__links,
-footer {
-  background-color: var(--dark-green);
-}
-
-.article {
-  margin-top: 10.0rem;
-}
-
-.custom-link {
-  color: var(--white);
-  text-decoration: none;
+/* 2. Seção: Quem Somos */
+.quem-somos {
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+  overflow: hidden;
   position: relative;
 }
 
-.custom-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -.3rem;
-  width: 100%;
-  height: .3rem;
-  background-color: #28a745;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+.quem-somos .section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: #144930;
+  margin-bottom: 2rem;
 }
 
-.custom-link:hover::after {
-  transform: scaleX(1);
+.quem-somos .lead.destaque {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.8;
 }
 
-.pe-3 {
-    padding-right: 1rem;
+.quem-somos .quem-somos-text {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
 }
 
-.marginTop {
-  margin-top: 8.0rem;
+.quem-somos .btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.quem-somos .btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+.quem-somos .visual-element {
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.quem-somos .visual-element img {
+  max-width: 100%;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.quem-somos .visual-element:hover {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .quem-somos .section-title {
+      font-size: 2.5rem;
+  }
+
+  .quem-somos .lead.destaque,
+  .quem-somos .quem-somos-text {
+      text-align: center;
+  }
+
+  .quem-somos .btn {
+      margin: 0 auto;
+      display: block;
+  }
+}
+
+/* 3. Linha do Tempo */
+.timeline-marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.timeline-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+/* 4. Seção: Equipe de Pesquisadores */
+.equipe-pesquisadores .col-md-4 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipe-pesquisadores .col-md-4:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden; /* Garante que elementos internos não ultrapassem o limite do card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* 5. Seção: Áreas de Atuação */
+.areas-atuacao .area-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.areas-atuacao .area-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.areas-atuacao .area-icon {
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.areas-atuacao .area-card:hover .area-icon {
+  transform: scale(1.2);
+  background-color: #0056b3;
+}
+
+.areas-atuacao .area-card-hover {
+  background-color: rgba(0, 123, 255, 0.8);
+  opacity: 0;
+  z-index: 1;
+}
+
+.areas-atuacao .area-card:hover .area-card-hover {
+  opacity: 0.1;
+}
+
+/* 6. Seção: Destaques */
+.destaques .destaque-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destaques .destaque-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.destaques .destaque-hover {
+  background-color: rgba(0, 123, 255, 0.8);
+  opacity: 0;
+  z-index: 1;
+}
+
+.destaques .destaque-card:hover .destaque-hover {
+  opacity: 0.1;
+}
+
+/* 7. Seção: Call to Action */
+.cta-section {
+  background: linear-gradient(135deg, #007bff 0%, #00aaff 100%);
+  color: #fff;
+  padding: 2rem 0;
+  border-radius: 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section .btn {
+  background: #ffffff;
+  color: #007bff;
+  font-weight: bold;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cta-section .btn:hover {
+  transform: scale(1.1);
+  background: #f8f9fa;
+  color: #0056b3;
+}
+
+/* 8. Animações */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
