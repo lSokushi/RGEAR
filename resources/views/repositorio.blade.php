@@ -39,23 +39,32 @@
     <p>Adicione os artigos aqui...</p>
   </div>
 </div>
-<section>
-  <article>
-      <div class="title-artigos">
-          <h1><u><b>Artigos</b></u></h1>
+
+
+  <!-- 6. Área de conteúdo de artigos -->
+  <div class="mt-8">
+      <h2 class="text-xl font-semibold mb-4">Artigos</h2>
+      <div class="space-y-4">
+          <div class="bg-gray-100 p-4 rounded-lg">
+              <p>Adicione os artigos aqui...</p>
+          </div>
       </div>
-      <div class="articles-container">
-          @if(isset($publications) && $publications->isNotEmpty())
-              @foreach ($publications as $publication)
-                  <div class="article-box w-100">
-                      {{-- Exibe apenas a primeira imagem --}}
-                      @if (!empty($publication->images))
-                          @foreach (json_decode($publication->images) as $key => $image)
-                              @if ($key == 0)
-                                  <img class="image-placeholder img-fluid" src="{{ asset("storage/$image") }}" alt="Imagem da publicação">
-                              @endif
-                          @endforeach
-                      @endif
+  </div>
+
+  <!-- 7. Renderização de artigos -->
+  <div class="articles-container mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Verifica se há publicações -->
+      @if (isset($publications) && $publications->isNotEmpty())
+          @foreach ($publications as $publication)
+              <div class="article-box w-100">
+                  <!-- Exibe imagem da publicação -->
+                  @if (!empty($publication->images))
+                      @foreach (json_decode($publication->images) as $key => $image)
+                          @if ($key == 0)
+                              <img class="image-placeholder img-fluid" src="{{ asset("storage/$image") }}" alt="Imagem da publicação">
+                          @endif
+                      @endforeach
+                  @endif
 
                       <div class="title-cards-art">
                           <h2>{{ $publication['title'] }}</h2>
