@@ -32,6 +32,8 @@
         </div>
     </section>
 
+
+
     <!-- 3. Linha do Tempo -->
     <section class="timeline-section py-5">
         <div class="container">
@@ -55,45 +57,6 @@
         </div>
     </section>
 
-
-    {{-- <!-- 3. Equipe de Pesquisadores -->
-        <section class="equipe-pesquisadores mt-5 container">
-            <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
-            <div class="row g-4">
-                @foreach ($pesquisadores as $pesquisador)
-                    <div class="col-md-4" data-aos="fade-up">
-                        <div class="card shadow-sm border-0 h-100">
-                            <img src="{{ asset($pesquisador->image) }}" alt="{{ $pesquisador->name }}" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $pesquisador->name }}</h5>
-                                <p class="card-text">{{ $pesquisador->bio }}</p>
-                                <a href="{{ $pesquisador->link }}" class="btn btn-primary">Saiba mais</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </section> --}}
-    {{--         
-        <section class="equipe-pesquisadores mt-5 container">
-            <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
-            <div class="row g-4">
-                @foreach ($pesquisadores as $pesquisador)
-                    <div class="col-md-6 col-lg-4">
-                        <x-pesquisador-card 
-                            :name="$pesquisador->name" 
-                            :image="$pesquisador->image" 
-                            :bio="$pesquisador->bio" 
-                            :link="$pesquisador->link" 
-                            :direction="$loop->even ? 'end' : 'start'" 
-                        />
-                    </div>
-                @endforeach
-            </div>
-        </section>
-         --}}
-
-
     <!-- 4. Equipe de Pesquisadores -->
     <section class="equipe-pesquisadores mt-5 container">
         <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
@@ -114,20 +77,23 @@
             <div class="row g-4 justify-content-center">
                 @foreach ($areas as $area)
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="area-card shadow-lg p-4 rounded-4 bg-white text-center position-relative overflow-hidden" data-aos="fade-up">
-                            <div class="area-icon mb-3 mx-auto d-flex justify-content-center align-items-center bg-primary text-white rounded-circle shadow-sm" style="width: 80px; height: 80px; font-size: 2rem;">
+                        <div class="area-card shadow-lg p-4 rounded-4 bg-white text-center position-relative overflow-hidden"
+                            data-aos="fade-up">
+                            <div class="area-icon mb-3 mx-auto d-flex justify-content-center align-items-center bg-primary text-white rounded-circle shadow-sm"
+                                style="width: 80px; height: 80px; font-size: 2rem;">
                                 <i class="fas {{ $area['icon'] }}"></i>
                             </div>
                             <h3 class="area-title text-dark fw-bold mb-2">{{ $area['title'] }}</h3>
                             <p class="area-description text-muted">{{ $area['description'] }}</p>
-                            <div class="area-card-hover position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-0" style="transition: opacity 0.4s;"></div>
+                            <div class="area-card-hover position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-0"
+                                style="transition: opacity 0.4s;"></div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
-    
+
 
 
     <!-- 6. Destaques e Conquistas -->
@@ -137,20 +103,23 @@
             <div class="row g-4 justify-content-center">
                 @foreach ($highlights as $highlight)
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="card destaque-card shadow-lg border-0 rounded-4 text-center p-4 bg-white position-relative overflow-hidden" data-aos="fade-up">
-                            <div class="d-flex justify-content-center align-items-center mx-auto mb-3 text-primary bg-light rounded-circle shadow-sm" style="width: 80px; height: 80px; font-size: 2rem;">
+                        <div class="card destaque-card shadow-lg border-0 rounded-4 text-center p-4 bg-white position-relative overflow-hidden"
+                            data-aos="fade-up">
+                            <div class="d-flex justify-content-center align-items-center mx-auto mb-3 text-primary bg-light rounded-circle shadow-sm"
+                                style="width: 80px; height: 80px; font-size: 2rem;">
                                 <i class="bi {{ $highlight['icon'] }}"></i>
                             </div>
                             <h3 class="card-title text-dark fw-bold mb-2">{{ $highlight['value'] }}</h3>
                             <p class="card-text text-muted">{{ $highlight['text'] }}</p>
-                            <div class="destaque-hover position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-0" style="transition: opacity 0.4s;"></div>
+                            <div class="destaque-hover position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-0"
+                                style="transition: opacity 0.4s;"></div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
-    
+
 
     <!-- 7. Call to Action -->
     <section class="cta-section py-5 text-center">
@@ -166,11 +135,76 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="{{ mix('js/sobre-nos.js') }}"></script>
     <script>
+        // Inicializar AOS
         AOS.init({
-    once: true, // As animações só acontecem uma vez
-    duration: 800, // Duração das animações
-    easing: "ease-out", // Suavização das animações
-});
+            once: true, // As animações só acontecem uma vez
+            duration: 800, // Duração das animações
+            easing: "ease-out", // Suavização das animações
+        });
 
+        // Esperar até o DOM estar totalmente carregado
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inicializar GSAP e ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animação para cada marco
+            gsap.utils.toArray("[data-marco]").forEach((element) => {
+                const year = element.getAttribute("data-marco");
+
+                // Animação do texto do marco
+                gsap.fromTo(
+                    element.querySelector("h3"), {
+                        opacity: 0,
+                        y: 50
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%", // Quando o topo do elemento chega a 80% da tela
+                            end: "bottom 60%",
+                            toggleActions: "play none none reverse", // Play ao entrar, reverse ao sair
+                        },
+                    }
+                );
+
+                // Animação do círculo (ícone)
+                gsap.fromTo(
+                    element.querySelector("div.bg-blue-500, div.bg-green-500"), {
+                        scale: 0.5,
+                        opacity: 0
+                    }, {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 1,
+                        ease: "bounce.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%",
+                            end: "bottom 60%",
+                            toggleActions: "play none none reverse",
+                        },
+                    }
+                );
+            });
+
+            // Linha animada ao longo do scroll
+            gsap.fromTo(
+                ".w-1.bg-gray-300", {
+                    height: "0%"
+                }, {
+                    height: "100%",
+                    duration: 1.5,
+                    scrollTrigger: {
+                        trigger: "#linha-do-tempo",
+                        start: "top 80%",
+                        end: "bottom 10%",
+                        scrub: true, // Anima conforme o scroll
+                    },
+                }
+            );
+        });
     </script>
+
 </x-main-layout>

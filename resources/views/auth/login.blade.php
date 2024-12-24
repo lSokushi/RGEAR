@@ -1,39 +1,46 @@
-
 <x-main-layout title="Login">
+
+    <!-- 1. CSS -->
     <link rel="stylesheet" href="{{ asset('/css/login.css') }}" />
+
+    <!-- 2. Container Principal -->
     <div class="login-container">
-        <p></p>
-        <!-- Formulário de Login -->
-        <div class="login-box" id="loginForm">
-            <div class="login-form">
-                <h2>Login</h2>
-                <p>Acesso ao Repositório Acadêmico</p>
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="jane.doe@gmail.com" required />
 
-                    <label for="password">Senha</label>
-                    <div class="password-container">
-                        <input type="password" id="password" name="password" placeholder="******" required />
-                        <button type="button" id="togglePassword" class="toggle-password">&#128065;</button>
-                    </div>
-
-                    <div class="options">
-                        <label>
-                            <input type="checkbox" name="remember" /> Mantenha-se Conectado
-                        </label>
-                        <a href="#" class="forgot-password">Esqueceu a senha?</a>
-                    </div>
-                    <button type="submit" class="login-button">Login</button>
-                </form>
+        <!-- 2.1 Formulário de Login -->
+        <div class="login-container">
+            <div class="login-box">
+                <!-- 2.1 Formulário de Login -->
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <p>Acesso ao Repositório Acadêmico</p>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="admin@example.com" required />
+        
+                        <label for="password">Senha</label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" placeholder="******" required />
+                            <button type="button" id="togglePassword" class="toggle-password">&#128065;</button>
+                        </div>
+        
+                        <div class="options">
+                            <label class="remember-me">
+                                <input type="checkbox" /> Mantenha-se Conectado
+                            </label>
+                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+                        <button type="submit" class="login-button">Login</button>
+                    </form>
+                </div>
+        
+                <!-- 2.2 Imagem ao Lado -->
+                <div class="login-image">
+                    <img src="{{ asset('img/1-icon-rgear.png') }}" alt="Imagem representativa do RGEAR" />
+                </div>
             </div>
-            {{-- <div class="logo-container">
-                <img src="{{ asset('img/icon-rgear.png') }}" alt="Logo RGear" class="logo-img" />
-            </div> --}}
         </div>
-
-        <!-- Formulário de Recuperação de Senha -->
+        <!-- 2.2 Formulário de Recuperação de Senha -->
         <div class="login-box" id="passwordRecoveryForm" style="display: none;">
             <div class="login-form">
                 <h2>Recuperação de Senha</h2>
@@ -53,8 +60,10 @@
         </div>
     </div>
 
+    <!-- 3. Scripts -->
     @yield('scripts')
     <script>
+        // 3.1 Alternar entre Formulários
         function toggleForms() {
             const loginForm = document.getElementById('loginForm');
             const recoveryForm = document.getElementById('passwordRecoveryForm');
@@ -68,6 +77,7 @@
             }
         }
 
+        // 3.2 Enviar Email de Recuperação
         function sendRecoveryEmail() {
             const emailInput = document.getElementById('inputRecoveryEmail');
             const email = emailInput.value;
@@ -81,11 +91,10 @@
             toggleForms();
         }
 
-        // Adicionando evento ao link "Esqueceu a senha?"
+        // 3.3 Adicionar Evento ao Link "Esqueceu a senha?"
         document.querySelector('.forgot-password').addEventListener('click', function(event) {
             event.preventDefault();
             toggleForms();
         });
     </script>
-<script></script>
 </x-main-layout>

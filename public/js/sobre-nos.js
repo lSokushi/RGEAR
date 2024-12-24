@@ -55,6 +55,7 @@ const animateSplitText = (selector, stagger = 0.05) => {
     }
 };
 
+
 const animateGroup = (selector, options = {}, stagger = 0.2) => {
     const elements = document.querySelectorAll(selector);
     if (elements.length > 0) {
