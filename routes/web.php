@@ -14,7 +14,8 @@ use App\Http\Controllers\{
     RepositorioController,
     SobreNosController,
     UserController,
-
+    ProfileController,
+    SlideController
 };
 
 // Página inicial
@@ -77,3 +78,8 @@ Route::prefix('events')->group(function () {
 
 // Desenvolvedores
 Route::resource('developers', DeveloperController::class)->middleware('auth');
+
+//Slider
+
+
+Route::get('/slides', [SlideController::class, 'index']);

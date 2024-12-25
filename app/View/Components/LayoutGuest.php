@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class layout.guest extends Component
+class LayoutGuest extends Component
 {
     /**
      * Create a new component instance.
