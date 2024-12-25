@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-/* 2. Body Styles */
+/* 2. Base Styles */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -15,33 +15,54 @@ body {
     background-color: #f4f4f4;
 }
 
+/* 3. Navbar Styles */
 .navbar a:hover {
     color: #1e90ff;
     transition: color 0.3s ease;
 }
 
-/* 3. Headline Section */
-.headline-section {
-    background: #ffffff;
+/* 4. Hero Section */
+.hero {
+    height: 70vh; /* Reduzida para 70% da altura da viewport */
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    padding: 40px 20px;
+    color: white;
+    max-width: 80%;
 }
 
-.headline-section h1 {
-    font-size: 3em;
-    color: #1e90ff;
-    margin-bottom: 10px;
+.overlay h1 {
+    font-size: 2.5rem; /* Ajustado para melhor proporção */
 }
 
-.headline-section h2 {
-    font-size: 1.5em;
-    color: #555;
+.overlay p {
+    font-size: 1.2rem;
+    margin-top: 15px;
 }
 
-/* 4. About Section */
+.overlay .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+/* 5. About Section */
 .about-section {
     background-color: #ffffff;
-    padding: 60px 20px;
+    padding: 50px 20px; /* Reduzida para proporção */
     border: 1px solid #ddd;
     border-width: 1px 0;
 }
@@ -78,7 +99,7 @@ body {
     background-color: #f9f9f9;
 }
 
-/* 5. Features Section */
+/* 6. Features Section */
 .features {
     background-color: #f9f9f9;
     padding: 60px 20px;
@@ -131,6 +152,64 @@ body {
     color: #0073e6;
 }
 
+/* 7. Carousel Section */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%;
+}
+
+.slide {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #f4f4f4;
+    border-right: 1px solid #ddd;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-indicators .active {
+    background-color: #007bff;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) sepia(0.2) saturate(1.2);
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image:hover {
+    transform: scale(1.05);
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* 8. Cards Section */
 .card-carrosel {
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -140,31 +219,63 @@ body {
     text-align: center;
 }
 
-.card-carrosel h4 a {
-    text-decoration: none;
-    color: #0073e6;
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.card-carrosel p {
-    color: #555;
-    margin: 10px 0;
+/* 9. Statistics Section */
+.stat-card {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 10. No Data Placeholder */
 .no-data {
     text-align: center;
     color: #999;
     font-style: italic;
 }
 
-.event-image {
-    max-width: 100%;
-    height: 200px;
-    border-radius: 8px;
-    object-fit: cover;
+/* 11. Buttons */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
 }
 
-/* 6. Responsiveness */
+.nav-btn.prev {
+    left: 10px;
+}
+
+.nav-btn.next {
+    right: 10px;
+}
+
+.nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 12. Responsiveness */
 @media (max-width: 768px) {
+    .hero {
+        height: 50vh; /* Ajustado para dispositivos menores */
+    }
+
     .feature-items {
         flex-direction: column;
         align-items: center;
@@ -175,58 +286,16 @@ body {
         width: 80%;
         margin-bottom: 20px;
     }
-}
-.headline-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-    filter: grayscale(50%); /* Deixa a imagem 50% em tons de cinza */
-    transition: filter 0.3s ease; /* Animação ao aplicar ou remover o filtro */
-}
 
-.headline-image:hover {
-    filter: grayscale(0%); /* Remove o filtro ao passar o mouse */
-}
-.feature-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-    max-width: 600px;
-    margin: auto;
-}
+    .carousel h1 {
+        font-size: 1.8rem;
+    }
 
-.caption-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-}
+    .carousel p {
+        font-size: 1rem;
+    }
 
-.caption-text {
-    font-size: 16px;
-    color: #dddddd;
-    margin-top: 10px;
-}
-
-.caption-btn {
-    margin-top: 15px;
-    font-size: 14px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.caption-btn:hover {
-    background-color: #0056b3;
-    color: #ffffff;
-    transform: scale(1.05);
+    .overlay h1 {
+        font-size: 2rem;
+    }
 }
