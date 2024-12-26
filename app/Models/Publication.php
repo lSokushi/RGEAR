@@ -27,4 +27,5 @@ class Publication extends Model
         'research_lines' => 'array',
         'images' => 'array', // Se você armazena múltiplas imagens em formato JSON
     ];
+    
 }

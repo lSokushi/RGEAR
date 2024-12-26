@@ -202,7 +202,6 @@
                 <p class="no-data">Nenhum evento disponível no momento.</p>
             @endif
         </section>
-
     </main>
 
     <!-- 8. Scripts -->

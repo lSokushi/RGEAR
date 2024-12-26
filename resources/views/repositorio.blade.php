@@ -20,7 +20,8 @@
                 <span class="input-group-text" id="search-icon">
                     <i class="fa fa-search"></i>
                 </span>
-                <input type="text" id="searchBar" class="form-control" placeholder="Digite sua busca aqui..." aria-label="Barra de pesquisa" aria-describedby="search-icon">
+                <input type="text" id="searchBar" class="form-control" placeholder="Digite sua busca aqui..."
+                    aria-label="Barra de pesquisa" aria-describedby="search-icon">
                 <button class="btn btn-outline-secondary" id="clearSearch">Limpar</button>
             </div>
         </div>
@@ -28,7 +29,8 @@
         <!-- 3.3. Advanced Filter -->
         <div class="d-flex justify-content-between align-items-center mb-4" id="filterContainer" style="display: none;">
             <div class="dropdown" id="filterDropdownContainer">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="filterDropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false" aria-controls="filterDropdown">
                     Filtros
                 </button>
                 <ul class="dropdown-menu " aria-labelledby="filterDropdown">
@@ -58,113 +60,112 @@
         <!-- 4. Sections -->
 
         <!-- 4.1. Articles Section -->
-        <section class="mb-5">
-            <h2 class="mb-4 text-secondary">Artigos</h2>
-            <div class="row g-4">
-                @if (isset($publications) && $publications->isNotEmpty())
-                    @foreach ($publications as $publication)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card">
-                                @if (!empty($publication->images))
-                                    @foreach (json_decode($publication->images) as $key => $image)
-                                        @if ($key == 0)
-                                            <img src="{{ asset("storage/$image") }}" class="card-img-top" alt="Imagem da publicação">
-                                        @endif
-                                    @endforeach
-                                @endif
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $publication['title'] }}</h5>
-                                    <p class="card-text">{{ Str::limit($publication['resume'], 30) }}</p>
-                                    <p class="card-text">
-                                        <small class="text-muted">{{ $publication['author'] }} | Atualizado {{ $publication['updated_at']->diffForHumans() }}</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <p class="text-muted">Nenhum artigo encontrado.</p>
-                @endif
+        <section class="articles py-5" id="artigos">
+            <h1 class="main-artigos main-artigos__text text-primary">Artigos</h1>
+            <div class="cards-area">
+                @forelse ($articles as $key => $article)
+                    <x-index-card class="card-principal" :index="$key + 1" :title="$article['title']" :resume="$article['resume']"
+                        :author="$article['author']" :year="$article['year']" :image="optional(json_decode($article['images']))[0] ?? asset('images/default-article.jpg')">
+                    </x-index-card>
+                @empty
+                    <div class="no-data text-center">
+                        <img src="{{ asset('images/default-empty.jpg') }}" alt="Sem artigos disponíveis"
+                            class="img-fluid mb-4">
+                        <p class="text-muted">Nenhum artigo disponível no momento.</p>
+                    </div>
+                @endforelse
             </div>
+            @if ($articles->isNotEmpty())
+                <div class="d-flex justify-content-center mt-4">
+                    <a class="ver-mais text-secondary text-decoration-underline fw-bold"
+                        href="{{ route('repositorio') }}#artigos">
+                        <h2>Ver mais</h2>
+                    </a>
+                </div>
+            @endif
         </section>
+
 
         <!-- 4.2. Games Section -->
-        <section class="mb-5">
-            <h2 class="mb-4 text-secondary">Jogos</h2>
-            <div class="row g-4">
-                @forelse ($games as $game)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card">
-                            @if ($game->images)
-                                <img src="{{ asset('storage/' . json_decode($game->images)[0]) }}" class="card-img-top" alt="Imagem do jogo">
-                            @endif
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $game->title }}</h5>
-                                <p class="card-text">{{ Str::limit($game->resume, 100) }}</p>
-                                <p class="card-text"><small>{{ $game->author }} | {{ $game->year }}</small></p>
-                            </div>
-                        </div>
-                    </div>
+        <section class="games py-5" id="jogos">
+            <h1 class="main-artigos main-artigos__text text-primary">Jogos</h1>
+            <div class="cards-area">
+                @forelse ($games as $key => $game)
+                    <x-index-card class="card-principal" :index="$key + 1" :title="$game['title']" :resume="$game['resume']"
+                        :author="$game['author']" :year="$game['year']" :image="optional(json_decode($game['images']))[0] ?? asset('images/default-game.jpg')">
+                    </x-index-card>
                 @empty
-                    <p class="text-muted">Nenhum jogo encontrado.</p>
+                    <div class="no-data text-center">
+                        <img src="{{ asset('images/default-empty.jpg') }}" alt="Sem jogos disponíveis"
+                            class="img-fluid mb-4">
+                        <p class="text-muted">Nenhum jogo disponível no momento.</p>
+                    </div>
                 @endforelse
             </div>
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-primary">Ver mais jogos</a>
-            </div>
+            @if ($games->isNotEmpty())
+                <div class="d-flex justify-content-center mt-4">
+                    <a class="ver-mais text-secondary text-decoration-underline fw-bold"
+                        href="{{ route('repositorio') }}#jogos">
+                        <h2>Ver mais</h2>
+                    </a>
+                </div>
+            @endif
         </section>
+
 
         <!-- 4.3. Events Section -->
-        <section class="mb-5">
-            <h2 class="mb-4 text-secondary">Eventos</h2>
-            <div class="row g-4">
-                @forelse ($events as $event)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card">
-                            @if ($event->images)
-                                <img src="{{ asset('storage/' . json_decode($event->images)[0]) }}" class="card-img-top" alt="Imagem do evento">
-                            @endif
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $event->title }}</h5>
-                                <p class="card-text">{{ Str::limit($event->resume, 100) }}</p>
-                                <p class="card-text"><small>{{ $event->author }} | {{ $event->year }}</small></p>
-                            </div>
-                        </div>
-                    </div>
+        <section class="events py-5" id="eventos">
+            <h1 class="main-artigos main-artigos__text text-primary">Eventos</h1>
+            <div class="cards-area">
+                @forelse ($events as $key => $event)
+                    <x-index-card class="card-principal" :index="$key + 1" :title="$event['title']" :resume="$event['resume']"
+                        :author="$event['author']" :year="$event['year']" :image="optional(json_decode($event['images']))[0] ?? asset('images/default-event.jpg')">
+                    </x-index-card>
                 @empty
-                    <p class="text-muted">Nenhum evento encontrado.</p>
+                    <div class="no-data text-center">
+                        <img src="{{ asset('images/default-empty.jpg') }}" alt="Sem eventos disponíveis"
+                            class="img-fluid mb-4">
+                        <p class="text-muted">Nenhum evento disponível no momento.</p>
+                    </div>
                 @endforelse
             </div>
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-primary">Ver mais eventos</a>
-            </div>
+            @if ($events->isNotEmpty())
+                <div class="d-flex justify-content-center mt-4">
+                    <a class="ver-mais text-secondary text-decoration-underline fw-bold"
+                        href="{{ route('repositorio') }}#eventos">
+                        <h2>Ver mais</h2>
+                    </a>
+                </div>
+            @endif
         </section>
 
+
         <!-- 4.4. Other Publications Section -->
-        <section class="py-5 bg-white rounded shadow-sm mb-5">
-            <h2 class="mb-4 text-secondary text-center">Outros</h2>
-            <div class="row g-4">
-                @for ($i = 1; $i <= 2; $i++)
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <img src="https://placehold.co/507x335?text=Outros+{{ $i }}" class="card-img-top" alt="Outros {{ $i }}">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Título do Cartão</h5>
-                                <p class="card-text">Grelo doesn't need much, no I only ask God for good health...</p>
-                                <p class="card-text mt-auto">
-                                    <small class="text-muted">Autor | Atualizado há 3 minutos</small>
-                                </p>
-                            </div>
-                        </div>
+        <section class="others py-5" id="outros">
+            <h1 class="main-artigos main-artigos__text text-primary">Outros</h1>
+            <div class="cards-area">
+                @forelse ($others as $key => $other)
+                    <x-index-card class="card-principal" :index="$key + 1" :title="$other['title']" :resume="$other['resume']"
+                        :author="$other['author']" :year="$other['year']" :image="optional(json_decode($other['images']))[0] ?? asset('images/default-other.jpg')">
+                    </x-index-card>
+                @empty
+                    <div class="no-data text-center">
+                        <img src="{{ asset('images/default-empty.jpg') }}" alt="Sem publicações disponíveis"
+                            class="img-fluid mb-4">
+                        <p class="text-muted">Nenhuma publicação disponível no momento.</p>
                     </div>
-                @endfor
+                @endforelse
             </div>
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-secondary btn-lg">
-                    <i class="fa fa-info-circle me-2"></i>Ver mais
-                </a>
-            </div>
+            @if ($others->isNotEmpty())
+                <div class="d-flex justify-content-center mt-4">
+                    <a class="ver-mais text-secondary text-decoration-underline fw-bold"
+                        href="{{ route('repositorio') }}#outros">
+                        <h2>Ver mais</h2>
+                    </a>
+                </div>
+            @endif
         </section>
+
     </main>
 
 </x-main-layout>

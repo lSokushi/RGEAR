@@ -40,39 +40,64 @@ class ArticleController extends Controller
      */
     public function repository(Request $request)
     {
-        // Filtros opcionais para a pesquisa
-        $query = Publication::query();
-
-        if ($request->filled('title')) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        }
-
-        if ($request->filled('author')) {
-            $query->where('author', 'like', '%' . $request->input('author') . '%');
-        }
-
-        if ($request->filled('year')) {
-            $query->where('year', $request->input('year'));
-        }
-
-        // Categorização das publicações
-        $articles = $query->where('type', 'article')
-            ->orderBy('created_at', 'desc')
-            ->paginate(6, ['*'], 'articles');
-        
-        $games = $query->where('type', 'game')
-            ->orderBy('created_at', 'desc')
-            ->paginate(6, ['*'], 'games');
-        
-        $events = $query->where('type', 'event')
-            ->orderBy('created_at', 'desc')
-            ->paginate(6, ['*'], 'events');
-        
-        $others = $query->where('type', 'other')
-            ->orderBy('created_at', 'desc')
-            ->paginate(6, ['*'], 'others');
-
-        // Retorna a view do repositório com os dados organizados
+        $filters = $request->only(['title', 'author', 'year']); // Captura filtros opcionais
+    
+        // Artigos
+        $articles = Publication::where('type', 'article')
+            ->when(isset($filters['title']), function ($query) use ($filters) {
+                return $query->where('title', 'like', '%' . $filters['title'] . '%');
+            })
+            ->when(isset($filters['author']), function ($query) use ($filters) {
+                return $query->where('author', 'like', '%' . $filters['author'] . '%');
+            })
+            ->when(isset($filters['year']), function ($query) use ($filters) {
+                return $query->where('year', $filters['year']);
+            })
+            ->latest()
+            ->paginate(6);
+    
+        // Jogos
+        $games = Publication::where('type', 'game')
+            ->when(isset($filters['title']), function ($query) use ($filters) {
+                return $query->where('title', 'like', '%' . $filters['title'] . '%');
+            })
+            ->when(isset($filters['author']), function ($query) use ($filters) {
+                return $query->where('author', 'like', '%' . $filters['author'] . '%');
+            })
+            ->when(isset($filters['year']), function ($query) use ($filters) {
+                return $query->where('year', $filters['year']);
+            })
+            ->latest()
+            ->paginate(6);
+    
+        // Eventos
+        $events = Publication::where('type', 'event')
+            ->when(isset($filters['title']), function ($query) use ($filters) {
+                return $query->where('title', 'like', '%' . $filters['title'] . '%');
+            })
+            ->when(isset($filters['author']), function ($query) use ($filters) {
+                return $query->where('author', 'like', '%' . $filters['author'] . '%');
+            })
+            ->when(isset($filters['year']), function ($query) use ($filters) {
+                return $query->where('year', $filters['year']);
+            })
+            ->latest()
+            ->paginate(6);
+    
+        // Outros
+        $others = Publication::where('type', 'other')
+            ->when(isset($filters['title']), function ($query) use ($filters) {
+                return $query->where('title', 'like', '%' . $filters['title'] . '%');
+            })
+            ->when(isset($filters['author']), function ($query) use ($filters) {
+                return $query->where('author', 'like', '%' . $filters['author'] . '%');
+            })
+            ->when(isset($filters['year']), function ($query) use ($filters) {
+                return $query->where('year', $filters['year']);
+            })
+            ->latest()
+            ->paginate(6);
+    
         return view('repositorio', compact('articles', 'games', 'events', 'others'));
-    }
+    }    
 }

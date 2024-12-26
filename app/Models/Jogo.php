@@ -13,8 +13,9 @@ class Jogo extends Model
 
     protected $fillable = [
         'title',
-        'description',
+        'resume',
+        'description', // Adicione aqui
+        'images',
         'author',
-        'image_url'
     ];
 }

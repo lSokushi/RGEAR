@@ -11,7 +11,10 @@ class DashboardPublicationController extends Controller
 {
     public function store(Request $request)
     {
-
+        // Mapear 'resume' para 'description'
+        $request->merge([
+            'description' => $request->input('resume'),
+        ]);
 
         // Validação dos dados recebidos
         $validated = $request->validate([
@@ -20,15 +23,16 @@ class DashboardPublicationController extends Controller
             'resume' => 'string|required',
             'item_type' => 'string|required',
             'status' => 'string|required',
-            'research_lines' => 'required|array|min:1', // Obrigatório e deve ter pelo menos uma linha
-            'research_lines.*' => 'string|required', // Cada linha deve ser uma string válida
-            'images' => 'nullable|array', // Para aceitar múltiplas imagens
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // Validação para cada imagem
-            'file' => 'required|mimes:pdf,zip,apk,build', //Aceita um arquivo
+            'research_lines' => 'required|array|min:1',
+            'research_lines.*' => 'string|required',
+            'images' => 'nullable|array',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'file' => 'required|mimes:pdf,zip,apk|max:10240',
             'year' => 'integer|required',
             'location' => 'string|required',
-            'type' => 'required|string|in:article,game,event,other', // Validação do tipo
-
+            'type' => 'required|string|in:article,game,event,other',
+            'section_id' => 'required|integer|in:1,2,3,4',
+            'description' => 'required|string|max:1000', // Adicione aqui a validação para a descrição
         ]);
 
 
@@ -40,9 +44,10 @@ class DashboardPublicationController extends Controller
         $publication->resume = $validated['resume'];
         $publication->item_type = $validated['item_type'];
         $publication->status = $validated['status'];
-        $publication->research_lines = json_encode($validated['research_lines']); // Salvar como JSON no banco
+        $publication->research_lines = json_encode($validated['research_lines']);
         $publication->year = $validated['year'];
         $publication->location = $validated['location'];
+        $publication->section_id = $validated['section_id'];
 
         // Processar imagens se forem enviadas
         if ($request->hasFile('images')) {
@@ -64,6 +69,11 @@ class DashboardPublicationController extends Controller
             $publication->file = $path; // Salva o arquivo como string no banco
         }
 
+        // Salvar a publicação no banco de dados
+        $publication->save();
+
+        // Salvar em tabelas específicas (se aplicável)
+
         switch ($validated['type']) {
             case 'article':
                 \App\Models\Artigo::create([
@@ -73,14 +83,17 @@ class DashboardPublicationController extends Controller
                     'author' => $validated['author'],
                 ]);
                 break;
-            case 'game':
-                \App\Models\Jogo::create([
-                    'title' => $validated['title'],
-                    'resume' => $validated['resume'],
-                    'images' => json_encode($validated['images']),
-                    'author' => $validated['author'],
-                ]);
-                break;
+                
+                case 'game':
+                    \App\Models\Jogo::create([
+                        'title' => $validated['title'],
+                        'description' => $validated['resume'], // Mapeia o campo 'resume' para 'description'
+                        'resume' => $validated['resume'],
+                        'images' => $publication->images,
+                        'author' => $validated['author'],
+                    ]);
+                    break;
+                
             case 'event':
                 \App\Models\Evento::create([
                     'title' => $validated['title'],
@@ -98,9 +111,6 @@ class DashboardPublicationController extends Controller
                 ]);
                 break;
         }
-        // Salvar a publicação no banco de dados
-        $publication->save();
-
         // Redirecionar com mensagem de sucesso
         return redirect()->route('dashboard-publication')->with('success', 'Publicação cadastrada com sucesso!');
     }
