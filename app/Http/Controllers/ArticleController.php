@@ -12,7 +12,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $publications = Publication::orderBy('created_at', 'desc')->paginate(10);
+        $publications = Publication::where('type', 'article')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
         return view('articles.index', compact('publications'));
     }
@@ -31,35 +33,46 @@ class ArticleController extends Controller
     }
 
     /**
-     * Exibe o repositório de artigos com opções de pesquisa e filtros.
+     * Exibe o repositório com opções de pesquisa e filtros.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
     public function repository(Request $request)
     {
-        // Inicializa a query para pesquisa
+        // Filtros opcionais para a pesquisa
         $query = Publication::query();
 
-        // Filtra por título
         if ($request->filled('title')) {
             $query->where('title', 'like', '%' . $request->input('title') . '%');
         }
 
-        // Filtra por autor
         if ($request->filled('author')) {
             $query->where('author', 'like', '%' . $request->input('author') . '%');
         }
 
-        // Filtra por ano
         if ($request->filled('year')) {
             $query->where('year', $request->input('year'));
         }
 
-        // Ordena e pagina os resultados
-        $articles = $query->orderBy('created_at', 'desc')->paginate(10);
+        // Categorização das publicações
+        $articles = $query->where('type', 'article')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6, ['*'], 'articles');
+        
+        $games = $query->where('type', 'game')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6, ['*'], 'games');
+        
+        $events = $query->where('type', 'event')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6, ['*'], 'events');
+        
+        $others = $query->where('type', 'other')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6, ['*'], 'others');
 
-        // Retorna a view do repositório com os dados filtrados
-        return view('repositorio', compact('articles'));
+        // Retorna a view do repositório com os dados organizados
+        return view('repositorio', compact('articles', 'games', 'events', 'others'));
     }
 }

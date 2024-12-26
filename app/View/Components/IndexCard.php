@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class internal-layout extends Component
+class IndexCard extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class internal-layout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.internal-layout');
+        return view('components.index-card');
     }
 }

@@ -22,7 +22,9 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('/css/main.css')}}" />
     
-    <title>{{$title}}</title>
+    <title>{{ $title }}</title>
+
+
 </head>
 
 <body>

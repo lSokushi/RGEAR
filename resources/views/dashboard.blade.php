@@ -1,7 +1,7 @@
 <x-internal-layout title="Dashboard">
 <body>
   <main class="container-fluid w-100">
-    <div class="row flex flex">
+    <div class="row flex">
       <aside class="col-md-2 bg-dark text-white p-4 d-flex flex-column">
         <div class="d-flex align-items-center gap-3 mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill"
@@ -24,7 +24,7 @@
             </a>
           </p>
           <div class="collapse mb-4" id="collapseExample">
-            <div class="card card-body border border-0">
+            <div class="card card-body border">
               <a href="#" onclick="showSection('usuario')">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-person-add" viewBox="0 0 16 16">
@@ -60,7 +60,7 @@
             </a>
           </p>
           <div class="collapse mb-4" id="collapse2Example">
-            <div class="card card-body border border-0">
+            <div class="card card-body  border-0">
               <a href="{{route("editaruser")}}" onclick="showSection('usuario')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-person-add" viewBox="0 0 16 16">
