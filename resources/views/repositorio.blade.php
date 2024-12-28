@@ -8,7 +8,7 @@
     <main class="container mt-4">
 
         <!-- 3.1. Header -->
-        <div class="text-center mb-4">
+        {{-- <div class="text-center mb-4"> --}}
             <h1 class="fw-bold">Repositórios</h1>
             <p class="text-muted">Explore os repositórios disponíveis e encontre o que procura.</p>
         </div>
@@ -57,28 +57,27 @@
             </ul>
         </nav>
 
-        <!-- 4. Sections -->
+
+
 
         <!-- 4.1. Articles Section -->
         <section class="articles py-5" id="artigos">
-            <h1 class="main-artigos main-artigos__text text-primary">Artigos</h1>
+            <h1 class="main-artigos main-artigos__text text-black">Artigos em Destaque</h1>
             <div class="cards-area">
-                @forelse ($articles as $key => $article)
-                    <x-index-card class="card-principal" :index="$key + 1" :title="$article['title']" :resume="$article['resume']"
-                        :author="$article['author']" :year="$article['year']" :image="optional(json_decode($article['images']))[0] ?? asset('images/default-article.jpg')">
+                @forelse ($publications as $key => $publication)
+                    <x-index-card class="card-principal" :index="$key + 1" :title="$publication['title']" :resume="$publication['resume']"
+                        :author="$publication['author']" :year="$publication['year']" :image="optional(json_decode($publication['images']))[0] ??
+                            asset('images/default-article.jpg')">
                     </x-index-card>
                 @empty
-                    <div class="no-data text-center">
-                        <img src="{{ asset('images/default-empty.jpg') }}" alt="Sem artigos disponíveis"
-                            class="img-fluid mb-4">
-                        <p class="text-muted">Nenhum artigo disponível no momento.</p>
-                    </div>
+                    <p class="no-data">Nenhum artigo disponível no momento.</p>
                 @endforelse
             </div>
-            @if ($articles->isNotEmpty())
+            @if ($publications->isNotEmpty())
                 <div class="d-flex justify-content-center mt-4">
                     <a class="ver-mais text-secondary text-decoration-underline fw-bold"
-                        href="{{ route('repositorio') }}#artigos">
+                        href="{{ route('repositorio') }}" target="_blank">
+                        <br>
                         <h2>Ver mais</h2>
                     </a>
                 </div>
@@ -86,31 +85,26 @@
         </section>
 
 
-        <!-- 4.2. Games Section -->
-        <section class="games py-5" id="jogos">
-            <h1 class="main-artigos main-artigos__text text-primary">Jogos</h1>
-            <div class="cards-area">
-                @forelse ($games as $key => $game)
-                    <x-index-card class="card-principal" :index="$key + 1" :title="$game['title']" :resume="$game['resume']"
-                        :author="$game['author']" :year="$game['year']" :image="optional(json_decode($game['images']))[0] ?? asset('images/default-game.jpg')">
-                    </x-index-card>
-                @empty
-                    <div class="no-data text-center">
-                        <img src="{{ asset('images/default-empty.jpg') }}" alt="Sem jogos disponíveis"
-                            class="img-fluid mb-4">
-                        <p class="text-muted">Nenhum jogo disponível no momento.</p>
-                    </div>
-                @endforelse
-            </div>
-            @if ($games->isNotEmpty())
-                <div class="d-flex justify-content-center mt-4">
-                    <a class="ver-mais text-secondary text-decoration-underline fw-bold"
-                        href="{{ route('repositorio') }}#jogos">
-                        <h2>Ver mais</h2>
-                    </a>
-                </div>
-            @endif
-        </section>
+<!-- 4.2. Games Section -->
+<section class="games py-5" id="jogos">
+    <h1 class="main-artigos main-artigos__text text-primary">Jogos</h1>
+    <div class="cards-area">
+        @forelse ($games as $key => $game)
+            <x-index-card 
+                class="card-principal" 
+                :index="$key + 1" 
+                :title="$game->title" 
+                :resume="$game->resume"
+                :author="$game->author" 
+                :year="$game->year" 
+                :image="optional(json_decode($game->images))[0] ?? asset('images/default-game.jpg')">
+            </x-index-card>
+        @empty
+            <p class="no-data">Nenhum jogo disponível no momento.</p>
+        @endforelse
+    </div>
+</section>
+
 
 
         <!-- 4.3. Events Section -->

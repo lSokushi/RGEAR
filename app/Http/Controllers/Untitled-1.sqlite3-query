@@ -1,0 +1,4 @@
+-- database: ../../../database/database.sqlite
+
+SELECT * FROM publications;
+ALTER TABLE publications ADD COLUMN type VARCHAR;

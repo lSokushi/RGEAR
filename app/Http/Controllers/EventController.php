@@ -32,13 +32,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:100',
-            'date' => 'required|date',
-            'description' => 'nullable|string',
-            'location' => 'nullable|string|max:255',
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'nullable|string', // Permite que description seja nulo
         ]);
 
-        $event = Event::create($request->all());
+        $event = Event::create([
+            'title' => $request->input('title'),
+            'author' => $request->input('author'),
+            'description' => $request->input('description', 'Descrição padrão para o evento'), // Define um padrão
+        ]);
+
+        // Retorna o evento recém-criado em formato JSON
         return response()->json($event, 201);
     }
 

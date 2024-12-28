@@ -2,127 +2,126 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Publication;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+
 
 class DashboardPublicationController extends Controller
 {
+    /**
+     * Exibe o formulário para criar uma nova publicação.
+     */
+    public function create()
+    {
+        return view('dashboard-publication');
+    }
+
+    /**
+     * Lista todas as publicações.
+     */
+    public function index()
+    {
+        $publications = Publication::all(); // Recupera todas as publicações
+        return view('dashboard-publication', compact('publications'));
+    }
+
+    /**
+     * Processa e armazena uma nova publicação.
+     */
     public function store(Request $request)
     {
-        // Mapear 'resume' para 'description'
-        $request->merge([
-            'description' => $request->input('resume'),
-        ]);
-
-        // Validação dos dados recebidos
+        // Validação dos dados do formulário
         $validated = $request->validate([
             'title' => 'string|required',
             'author' => 'string|required',
-            'resume' => 'string|required',
+            'resume' => 'string|required|max:1000',
             'item_type' => 'string|required',
             'status' => 'string|required',
             'research_lines' => 'required|array|min:1',
             'research_lines.*' => 'string|required',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'file' => 'required|mimes:pdf,zip,apk|max:10240',
+            'file' => 'required|mimes:pdf,zip,apk|max:10240', // Arquivo obrigatório
             'year' => 'integer|required',
             'location' => 'string|required',
             'type' => 'required|string|in:article,game,event,other',
-            'section_id' => 'required|integer|in:1,2,3,4',
-            'description' => 'required|string|max:1000', // Adicione aqui a validação para a descrição
         ]);
 
+        // Mapeamento do tipo para seção
+        $sectionMapping = [
+            'Artigo' => 3,
+            'Jogo APK' => 4,
+            'Participação em Eventos' => 5,
+            'Outros' => 6,
+        ];
+        
+        $sectionId = $sectionMapping[$validated['item_type']] ?? null;
 
+        
+        // Verifica e processa o arquivo (obrigatório)
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $filePath = $this->processFile($request->file('file'));
+        Log::info('Caminho do arquivo salvo:', ['filePath' => $filePath]); // Log para verificação
+        } else {
+            return redirect()->back()->withErrors(['file' => 'O arquivo é obrigatório e deve ser válido.'])->withInput();
+        }
+        
+        // Processar imagens (se houver)
+        $imagePaths = $request->has('images') ? $this->processImages($request->file('images')) : null;
 
-        // Criar uma nova instância do modelo
-        $publication = new Publication();
-        $publication->title = $validated['title'];
-        $publication->author = $validated['author'];
-        $publication->resume = $validated['resume'];
-        $publication->item_type = $validated['item_type'];
-        $publication->status = $validated['status'];
-        $publication->research_lines = json_encode($validated['research_lines']);
-        $publication->year = $validated['year'];
-        $publication->location = $validated['location'];
-        $publication->section_id = $validated['section_id'];
+        // Criar publicação no banco de dados
+        Publication::create([
+            'title' => $validated['title'],
+            'author' => $validated['author'],
+            'resume' => $validated['resume'],
+            'item_type' => $validated['item_type'],
+            'status' => $validated['status'],
+            'research_lines' => json_encode($validated['research_lines']),
+            'year' => $validated['year'],
+            'location' => $validated['location'],
+            'type' => $validated['type'],
+            'section_id' => $sectionId,
+            'images' => $imagePaths ? json_encode($imagePaths) : null,
+            'file' => $filePath,
+        ]);
 
-        // Processar imagens se forem enviadas
-        if ($request->hasFile('images')) {
+        // Redirecionar com base no tipo da publicação
+        return redirect(url("/repositorio#{$validated['type']}"))
+            ->with('success', Str::title($validated['type']) . ' cadastrado com sucesso!');
+    }
 
-            $imagePaths = [];
-
-            foreach ($request->file('images') as $image) {
+    /**
+     * Processa e armazena imagens.
+     */
+    private function processImages($images)
+    {
+        $imagePaths = [];
+        foreach ($images as $image) {
+            try {
                 $fileName = now()->timestamp . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('images', $fileName, "public"); // Salva na pasta 'public/images'
-                array_push($imagePaths, $path);
+                $path = Storage::disk('public')->putFileAs('images', $image, $fileName);
+                $imagePaths[] = $path;
+            } catch (\Exception $e) {
+                report($e); // Log de erros
             }
-
-            $publication->images = json_encode($imagePaths); // Salva as imagens como JSON
         }
-
-        if ($request->hasFile('file')) {
-            $fileName = now()->timestamp . '.' . $request->file('file')->getClientOriginalExtension();
-            $path = $request->file('file')->storeAs('files', $fileName, 'public');
-            $publication->file = $path; // Salva o arquivo como string no banco
-        }
-
-        // Salvar a publicação no banco de dados
-        $publication->save();
-
-        // Salvar em tabelas específicas (se aplicável)
-
-        switch ($validated['type']) {
-            case 'article':
-                \App\Models\Artigo::create([
-                    'title' => $validated['title'],
-                    'resume' => $validated['resume'],
-                    'images' => json_encode($validated['images']),
-                    'author' => $validated['author'],
-                ]);
-                break;
-                
-                case 'game':
-                    \App\Models\Jogo::create([
-                        'title' => $validated['title'],
-                        'description' => $validated['resume'], // Mapeia o campo 'resume' para 'description'
-                        'resume' => $validated['resume'],
-                        'images' => $publication->images,
-                        'author' => $validated['author'],
-                    ]);
-                    break;
-                
-            case 'event':
-                \App\Models\Evento::create([
-                    'title' => $validated['title'],
-                    'resume' => $validated['resume'],
-                    'images' => json_encode($validated['images']),
-                    'author' => $validated['author'],
-                ]);
-                break;
-            default:
-                Publication::create([
-                    'title' => $validated['title'],
-                    'resume' => $validated['resume'],
-                    'images' => json_encode($validated['images']),
-                    'author' => $validated['author'],
-                ]);
-                break;
-        }
-        // Redirecionar com mensagem de sucesso
-        return redirect()->route('dashboard-publication')->with('success', 'Publicação cadastrada com sucesso!');
+        return $imagePaths;
     }
-    public function create()
+
+    /**
+     * Processa e armazena arquivos.
+     */
+    private function processFile($file)
     {
-        // Retorna a view para criar uma nova publicação
-        return view('dashboard-publication');
+        try {
+            $fileName = now()->timestamp . '.' . $file->getClientOriginalExtension();
+            return $file->storeAs('files', $fileName, 'public'); // Salva o arquivo no disco 'public'
+        } catch (\Exception $e) {
+            report($e);
+            return null; // Retorna null em caso de erro
+        }
     }
-    public function index()
-    {
-        // Lógica para exibir uma lista de publicações, se aplicável
-        $publications = Publication::all(); // Exemplo: recupera todas as publicações
-        return view('dashboard-publication', compact('publications'));
-    }
-}
+}    

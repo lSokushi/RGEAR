@@ -1,162 +1,88 @@
+/* General Styling */
 .section-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #007bff;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0056b3;
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.timeline {
-    position: relative;
-    padding: 2rem 0;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.timeline-line {
-    position: absolute;
-    left: calc(50% - 2px);
-    top: 0;
-    height: 100%;
-    width: 4px;
-    background-color: #007bff;
-    transition: background-color 0.3s;
-}
-
-.timeline-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.timeline-marker {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.2rem;
-    transform: translateY(-50%);
-    z-index: 3;
-}
-
-.timeline-content {
-    width: 45%;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.timeline-item:hover .timeline-content {
-    transform: scale(1.05);
-    background-color: #f0f8ff;
-}
-
-.timeline-line.scrolled {
-    background-color: #28a745;
-}
-
-
-.area-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.area-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-.card {
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-
-
-/* Estilos da Seção Linha do Tempo */
-.timeline-section {
-    background-color: #f9f9f9;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: bold;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    text-align: center;
 }
 
+/* Timeline Section */
+.timeline-section {
+    background-color: #f4f4f4;
+    padding: 4rem 0;
+}
+
+/* Timeline Container */
 .timeline {
     position: relative;
-    padding: 20px 0;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2rem 0;
 }
 
-/* Linha Vertical */
 .timeline-line {
     position: absolute;
+    left: 50%;
     top: 0;
     bottom: 0;
-    left: 50%;
     width: 4px;
-    background: #e0e0e0;
+    background: linear-gradient(to bottom, #0056b3, #28a745);
     transform: translateX(-50%);
     z-index: 1;
+    transition: background 0.5s ease;
 }
 
-/* Estilos dos Itens da Timeline */
 .timeline-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    margin: 3rem 0;
     position: relative;
-    z-index: 2;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-    margin-right: auto;
+    align-self: flex-end;
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
-    margin-left: auto;
+    align-self: flex-start;
 }
 
+/* Timeline Content */
 .timeline-content {
     position: relative;
-    max-width: 45%;
-    background: white;
-    border: 2px solid #e0e0e0;
-    padding: 1.5rem;
-    border-radius: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 45%;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .timeline-content:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-content h3 {
-    font-size: 1.75rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 1rem;
 }
 
 .timeline-content p {
     font-size: 1rem;
     color: #6c757d;
+    line-height: 1.6;
 }
 
-/* Marcadores */
+/* Timeline Marker */
 .timeline-marker {
     position: absolute;
     top: 50%;
@@ -164,28 +90,100 @@
     transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
+    background: #0056b3;
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: bold;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Cores Personalizadas */
-.timeline-marker.bg-primary {
-    background-color: #007bff;
-}
-
-.timeline-marker.bg-secondary {
-    background-color: #6c757d;
-}
-
-.timeline-marker.bg-success {
+.timeline-marker:hover {
+    transform: scale(1.1);
     background-color: #28a745;
 }
 
-.timeline-marker.bg-dark {
-    background-color: #343a40;
+/* Areas of Expertise */
+.area-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.area-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.area-card .area-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #0056b3;
+    color: #fff;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    transition: background-color 0.3s ease;
+}
+
+.area-card .area-icon:hover {
+    background-color: #28a745;
+}
+
+.area-card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.area-card p {
+    font-size: 0.95rem;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+/* Call to Action Button */
+.btn-primary {
+    background-color: #0056b3;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #28a745;
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .timeline-content {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .timeline {
+        padding: 1rem;
+    }
+
+    .area-card {
+        padding: 1.5rem;
+    }
 }

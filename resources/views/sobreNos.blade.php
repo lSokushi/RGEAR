@@ -2,9 +2,13 @@
 
     <!-- 1. Importação de Estilos -->
     <link rel="stylesheet" href="{{ asset('/css/about-us.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/css/sobre-nos.css') }}" />
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+
+
 
     <!-- 2. Seção: Quem Somos -->
     <section class="quem-somos py-5 position-relative">
@@ -21,7 +25,6 @@
                         Desde sua criação, o grupo tem ampliado suas áreas de atuação, incorporando novas tecnologias e
                         promovendo impacto social por meio de projetos interdisciplinares e sustentáveis.
                     </p>
-                    <a href="#timeline" class="btn btn-primary mt-4">Saiba Mais</a>
                 </div>
                 <div class="col-lg-5 text-center">
                     <div class="visual-element" id="quem-somos-visual">
@@ -32,7 +35,49 @@
         </div>
     </section>
 
+    <!-- 1. Seção: Banner -->
+    <section class="about-section py-5 bg-light">
+        <div class="container about-container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="about-text text-secondary">
+                         O nome grupo de pesquisa cientifica RGEAR representa a iniciativa de pesquisadores do instituto federal da bahia Research Group in Engineering, Artificial Intelligence and Robotics (RGEAR) é um grupo 
+                         Fundado em 2018, o RGEAR – Grupo de Pesquisa em Engenharia, Inteligência Artificial e
+                        Robótica Aplicadas – nasceu no âmbito do Projeto Robótica Educacional IFBA Lauro de Freitas.
+                    </p>
+                    <div class="row gy-4">
+                        <div class="col-md-4 text-center">
+                            <div class="result-card p-3 shadow-sm rounded">
+                                <i class="bi bi-people-fill text-primary fs-2 mb-3"></i>
+                                <p class="text-secondary">Projetos de extensão para comunidades locais, promovendo
+                                    inclusão e aprendizado tecnológico.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="result-card p-3 shadow-sm rounded">
+                                <i class="bi bi-gear-fill text-success fs-2 mb-3"></i>
+                                <p class="text-secondary">Oficinas de robótica educacional e sustentável,
+                                    capacitando estudantes e profissionais.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="result-card p-3 shadow-sm rounded">
+                                <i class="bi bi-laptop text-info fs-2 mb-3"></i>
+                                <p class="text-secondary">Introdução prática ao Arduino e ao ThinkerCad, ampliando o
+                                    acesso ao conhecimento tecnológico.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="about-text text-secondary mt-4">
+                        Em 2019 e 2020, nossas atividades na Semana Nacional de Ciência e Tecnologia (SNCT) foram
+                        destaque, reforçando nosso compromisso com a disseminação de ciência e inovação.
+                    </p>
+                    <a href="#timeline" class="btn btn-primary mt-4">Saiba Mais</a>
 
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 3. Linha do Tempo -->
     <section class="timeline-section py-5">

@@ -12,7 +12,7 @@ class SlideSeeder extends Seeder
         Slide::create([
             'title' => 'Inovação e Educação com Impacto',
             'text' => 'O RGEAR é um centro de excelência em engenharia, inteligência artificial e robótica.',
-            'image' => '/img/carrousel/slide1.jpg',
+            'image' => '/img/carrousel/slide4.jpg',
             'link' => '#sobre',
             'btn_text' => 'Saiba Mais',
         ]);
@@ -28,9 +28,10 @@ class SlideSeeder extends Seeder
         Slide::create([
             'title' => 'Impacto Social e Sustentável',
             'text' => 'Promovemos inovação sustentável para comunidades e estudantes.',
-            'image' => '/img/carrousel/slide3.jpg',
+            'image' => '/img/carrousel/carrousel.jpg',
             'link' => '#estatisticas',
             'btn_text' => 'Ver Estatísticas',
         ]);
+        
     }
 }

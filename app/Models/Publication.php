@@ -20,6 +20,7 @@ class Publication extends Model
         'images',
         'year',
         'location',
+        'file', // Certifique-se de incluir 'file' aqui
     ];
 
     // Para armazenar linhas de pesquisa como JSON

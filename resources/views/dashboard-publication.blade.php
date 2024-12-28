@@ -1,5 +1,9 @@
 <!-- 1. Layout Definition -->
 <x-internal-layout title="Dashboard">
+    <!-- 2. Stylesheets -->
+    <link href="/public/css/das.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="/public/css/dashboard.css"> --}}
+
 
     <!-- 2. Main Container -->
 
@@ -102,13 +106,11 @@
                     </button>
 
                 </aside>
-
                 <!-- 4. Main Content -->
-                <section class="col-md-10 bg-light hide" class="createPublication">
-
+                <section class="col-md-10 bg-light createPublication">
                     <!-- 4.1. Publications Header -->
                     <div class="p-4 container-fluid">
-                        <h1 class="mb-4 text-dark w-100">Publicações</h1>
+                        <h1 class="mb-4 text-dark w-100 bg shadow-sm">Publicações</h1>
 
                         <!-- 4.2. Success and Error Messages -->
                         @if (Session::has('success'))
@@ -126,189 +128,175 @@
                         @endif
 
                         <!-- 4.3. Publication Form -->
-                        <div class="bg-white p-4 shadow-sm rounded">
-                            <form action="{{ route('dashboard-publication.store') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
+                        <section id="publicacoes">
+                            <div class="bg-white p-4 shadow-sm rounded">
+                                <form id="publication-form" action="{{ route('dashboard-publication.store') }}"
+                                    method="POST" enctype="multipart/form-data">
+                                    @csrf
 
-                                <!-- 4.3.1. Title and Author -->
-                                <div class="col-md-6">
-                                    <label for="inputTitle4" class="form-label fs-3">Título da publicação</label>
-                                    <input type="text" class="form-control h-75 fs-3" id="inputTitle4"
-                                        placeholder="Modelagem 3D com Blender" name="title" required />
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputAuthor4" class="form-label fs-3">Autores</label>
-                                    <input type="text" class="form-control h-75 fs-3" id="inputAuthor4"
-                                        placeholder="France Ferreira Arnaut" name="author" required />
-                                </div>
-
-                                <!-- 4.3.2. Resume and Item Type -->
-                                <div class="col-md-6">
-                                    <label for="inputResume" class="form-label fs-3">Resumo</label>
-                                    <textarea class="form-control fs-3 h-75" id="inputResume"
-                                        aria-label="O evento de modelagem 3D com Blender ensina a criar objetos e cenários em 3D, abordando..."
-                                        name="resume" required></textarea>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="itemType" class="form-label fs-3">Tipo de Item</label>
-                                    <select class="form-select form-select-lg fs-3 h-75" id="itemType"
-                                        aria-label="Selecionar tipo de item" name="item_type" required>
-                                        <option value="">Selecionar tipo de item</option>
-                                        <option value="Artigo">Artigo</option>
-                                        <option value="Jogo APK">Jogo APK</option>
-                                        <option value="Jogo Builder">Jogo Builder</option>
-                                        <option value="Modelagens">Modelagens</option>
-                                        <option value="Participação em Eventos">Participação em Eventos</option>
-                                        <option value="Outros">Outros</option>
-                                    </select>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <label for="type" class="form-label">Tipo de Publicação</label>
-                                    <select name="type" id="type" class="form-select" required>
-                                        <option value="">Selecione</option>
-                                        <option value="article">Artigo</option>
-                                        <option value="game">Jogo</option>
-                                        <option value="event">Evento</option>
-                                        <option value="other">Outro</option>
-                                    </select>
-                                </div>
-                                
-                                <!-- 4.3.3. section and status -->
-                                
-                                <div class="col-md-6">
-                                    <label for="section_id" class="form-label fs-3">Seção</label>
-                                    <select class="form-select fs-3" id="section_id" name="section_id" required>
-                                        <option value="">Selecionar Seção</option>
-                                        <option value="1">Artigos</option>
-                                        <option value="2">Eventos</option>
-                                        <option value="3">Jogos</option>
-                                        <option value="4">Outros</option>
-                                    </select>
-                                </div>
-                                
-
-                                <!-- 4.3.3. Status and Research Lines -->
-                                <div class="col-md-3">
-                                    <fieldset class="mb-3">
-                                        <legend class="col-form-label pt-0 fs-3">Status</legend>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status"
-                                                id="userType1" value="supervisor" checked required />
-                                            <label class="form-check-label fs-3" for="userType1">Produção
-                                                Interna</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status"
-                                                id="userType2" value="student" />
-                                            <label class="form-check-label fs-3" for="userType2">Participação
-                                                Externa</label>
+                                    <!-- Título e Autores -->
+                                    <fieldset class="fieldset-container mb-4">
+                                        <legend class="fs-3 fw-bold">Informações Básicas</legend>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="inputTitle4" class="form-label">Título da Publicação</label>
+                                                <input type="text" class="form-control form-control-lg" id="inputTitle4"
+                                                    name="title" placeholder="Ex: Modelagem 3D com Blender"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="inputAuthor4" class="form-label">Autores</label>
+                                                <input type="text" class="form-control form-control-lg" id="inputAuthor4"
+                                                    name="author" placeholder="Ex: France Ferreira Arnaut" required>
+                                            </div>
                                         </div>
                                     </fieldset>
-                                </div>
-                                <div class="col-md-3">
-                                    <fieldset class="mb-3">
-                                        <legend class="col-form-label pt-0 fs-3">Linha de Pesquisa</legend>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="Automação e Robótica Educacional" id="flexCheckDefault"
-                                                name="research lines[]">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Automação e Robótica Educacional
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="Engenharia e IA Aplicada" id="checkbox_engenharia"
-                                                name="research lines[]">
-                                            <label class="form-check-label" for="checkbox_engenharia">
-                                                Engenharia e IA Aplicada
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="Computação, Educação e Sustentabilidade"
-                                                id="checkbox_computacao" name="research lines[]">
-                                            <label class="form-check-label" for="checkbox_computacao">
-                                                Computação, Educação e Sustentabilidade
-                                            </label>
+
+                                    <!-- Resumo e Tipo de Item -->
+                                    <fieldset class="fieldset-container mb-4">
+                                        <legend class="fs-3 fw-bold">Detalhes do Conteúdo</legend>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="inputResume" class="form-label">Resumo</label>
+                                                <textarea class="form-control form-control-lg" id="inputResume" name="resume" rows="4"
+                                                    placeholder="Breve resumo da publicação..." required></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="itemType" class="form-label">Tipo de Item</label>
+                                                <select class="form-select" id="itemType" name="item_type" required>
+                                                    <option value="" disabled selected>Selecione o tipo de item
+                                                    </option>
+                                                    <option value="Artigo">Artigo</option>
+                                                    <option value="Jogo APK">Jogo APK</option>
+                                                    <option value="Jogo Builder">Jogo Builder</option>
+                                                    <option value="Modelagens">Modelagens</option>
+                                                    <option value="Participação em Eventos">Participação em Eventos
+                                                    </option>
+                                                    <option value="Outros">Outros</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </fieldset>
-                                </div>
 
-                                <!-- 4.3.4. Media Upload -->
-                                <div class="col-md-6">
-                                    <label for="formFileMultiple" class="form-label fs-3">Imagens da
-                                        publicação</label>
-                                    <input class="form-control form-control-lg p-3 h-auto fs-3" type="file"
-                                        id="formFileMultiple" accept="image/png,image/webp,image/jpg,image/jpeg"
-                                        multiple name="images[]">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="formFileMultiple" class="form-label fs-3">Arquivo</label>
-                                    <input class="form-control form-control-lg p-3 h-auto fs-3" type="file"
-                                        accept="application/pdf,application/zip,application/x-zip,application/x-zip-compressed,.apk,.build"
-                                        id="formFileMultiple" multiple name="file">
-                                </div>
-
-                                <!-- 4.3.5. Year and Location -->
-                                <div class="d-flex justify-content-end">
-                                    <div class="col-md-2">
-                                        <label for="inputYear4" class="form-label fs-3">Ano</label>
-                                        <input type="number" class="form-control fs-3" id="inputYear4"
-                                            placeholder="2024" step="1" name="year" />
-                                    </div>
-                                    <div class="col-md-2 ms-3">
-                                        <label for="inputYear4" class="form-label fs-3">Local da Publicação</label>
-                                        <input type="text" class="form-control fs-3" id="inputYear4"
-                                            placeholder="Lauro de Freitas, BA" required name="location" />
-                                    </div>
-                                </div>
-
-                                <!-- 4.3.6. Form Actions -->
-                                <div class="col-12 text-end">
-                                    <button type="submit"
-                                        class="border-0 rounded text-light fs-3 shadow">Cadastrar</button>
-                                    <button type="button" class="border-1 rounded-3 text-dark fs-3 shadow bg-light"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#previewModal">Pré-Visualização</button>
-                                </div>
-
-                                <!-- 4.3.7. Modal Preview -->
-                                <div class="modal fade" id="previewModal" tabindex="-1"
-                                    aria-labelledby="previewModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title fs-3" id="previewModalLabel">Pré-Visualização
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                    <!-- Status e Linha de Pesquisa -->
+                                    <fieldset class="fieldset-container mb-4">
+                                        <legend class="fs-3 fw-bold">Classificação</legend>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Status</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="status"
+                                                        id="statusInterno" value="Produção Interna" checked>
+                                                    <label class="form-check-label" for="statusInterno">Produção
+                                                        Interna</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="status"
+                                                        id="statusExterno" value="Participação Externa">
+                                                    <label class="form-check-label" for="statusExterno">Participação
+                                                        Externa</label>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam ipsam
-                                                    libero eaque error iusto fugit sint ut quaerat aut, voluptatem magni
-                                                    distinctio veniam nemo inventore beatae saepe iste. Ex, cumque.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary fs-2"
-                                                    data-bs-dismiss="modal">Fechar</button>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Linha de Pesquisa</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="lineAutomation" name="research_lines[]"
+                                                        value="Automação e Robótica Educacional">
+                                                    <label class="form-check-label" for="lineAutomation">Automação e
+                                                        Robótica Educacional</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="lineAI"
+                                                        name="research_lines[]" value="Engenharia e IA Aplicada">
+                                                    <label class="form-check-label" for="lineAI">Engenharia e IA
+                                                        Aplicada</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="lineComputing" name="research_lines[]"
+                                                        value="Computação, Educação e Sustentabilidade">
+                                                    <label class="form-check-label" for="lineComputing">Computação,
+                                                        Educação e Sustentabilidade</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </fieldset>
 
-                            </form>
-                        </div>
+                                    <!-- Local da Publicação -->
+                                    <fieldset class="fieldset-container mb-4">
+                                        <legend class="fs-3 fw-bold">Local da Publicação</legend>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="type" class="form-label">Local da Publicação</label>
+                                                <select name="type" id="type" class="form-select" required>
+                                                    <option value="  " disabled selected>Selecione o Tipo</option>
+                                                    <option value="article">Artigo</option>
+                                                    <option value="game">Jogo</option>
+                                                    <option value="event">Evento</option>
+                                                    <option value="other">Outro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+
+                                    <!-- Upload de Arquivos -->
+                                    <fieldset class="fieldset-container mb-4">
+                                        <legend class="fs-3 fw-bold">Mídia e Arquivos</legend>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="uploadImages" class="form-label">Imagens da
+                                                    Publicação</label>
+                                                <input type="file" class="form-control form-control-lg" id="uploadImages"
+                                                    name="images[]" accept="image/*" multiple>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="file" class="form-label">Arquivo Principal</label>
+                                                <input type="file" class="form-control form-control-lg" id="file" name="file" accept=".pdf,.zip,.apk" required>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Ano e Localização -->
+                                    <fieldset class="fieldset-container mb-4">
+                                        <legend class="fs-3 fw-bold">Publicação</legend>
+                                        <div class="row g-3">
+                                            <div class="col-md-4">
+                                                <label for="publicationYear" class="form-label">Ano</label>
+                                                <input type="number" class="form-control form-control-lg" id="publicationYear"
+                                                    name="year" value="{{ date('Y') }}" min="2000"
+                                                    max="{{ date('Y') }}" required>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="publicationLocation" class="form-label">Local da
+                                                    Publicação</label>
+                                                <input type="text" class="form-control form-control-lg" id="publicationLocation"
+                                                    name="location" placeholder="Ex: Lauro de Freitas, BA" required>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Ações -->
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#previewModal">Pré-Visualizar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
                     </div>
                 </section>
-            </div>
+
+
+
         </main>
 
         <!-- 5. Scripts -->
-        <script src="../../js/dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ mix('js/dashboard.js') }}"></script>
+        <script src="{{ mix('js/change-password.js') }}"></script>
     </body>
 
 </x-internal-layout>
