@@ -29,4 +29,11 @@ class Publication extends Model
         'images' => 'array', // Se você armazena múltiplas imagens em formato JSON
     ];
     
+    public function scopeSearch($query, $term)
+{
+    $term = "%{$term}%";
+    return $query->where('title', 'like', $term)
+                 ->orWhere('resume', 'like', $term)
+                 ->orWhere('author', 'like', $term);
+}
 }

@@ -80,3 +80,4 @@ Route::resource('developers', DeveloperController::class)->middleware('auth');
 // 8. Slides
 Route::get('/slides', [SlideController::class, 'index']);
 
+Route::get('/repositorio/search', [RepositorioController::class, 'search'])->name('repositorio.search');
