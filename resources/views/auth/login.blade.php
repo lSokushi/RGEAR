@@ -24,12 +24,14 @@
                             <button type="button" id="togglePassword" class="toggle-password">&#128065;</button>
                         </div>
         
-                        <div class="options">
-                            <label class="remember-me">
-                                <input type="checkbox" /> Mantenha-se Conectado
+                        <div class="options d-flex justify-content-between align-items-center">
+                            <label class="remember-me d-flex align-items-center mb-0">
+                                <input type="checkbox" class="me-2" />
+                                <span>Mantenha-se Conectado</span>
                             </label>
-                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                            <a href="#" class="forgot-password text-decoration-none">Esqueceu a senha?</a>
                         </div>
+                        
                         <button type="submit" class="login-button">Login</button>
                     </form>
                 </div>

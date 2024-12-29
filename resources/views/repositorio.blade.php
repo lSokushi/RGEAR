@@ -9,6 +9,7 @@
 
         <!-- 3.1. Header -->
         {{-- <div class="text-center mb-4"> --}}
+            <br>
             <h1 class="fw-bold">Repositórios</h1>
             <p class="text-muted">Explore os repositórios disponíveis e encontre o que procura.</p>
         </div>
@@ -20,16 +21,16 @@
                 <span class="input-group-text" id="search-icon">
                     <i class="fa fa-search"></i>
                 </span>
-                <input type="text" id="searchBar" class="form-control" placeholder="Digite sua busca aqui..."
+                <input type="text" id="searchBar" class="form-control form-control-lg" placeholder="Digite sua busca aqui..."
                     aria-label="Barra de pesquisa" aria-describedby="search-icon">
-                <button class="btn btn-outline-secondary" id="clearSearch">Limpar</button>
+                <button class="btn btn-outline-secondary btn-lg" id="clearSearch">Limpar</button>
             </div>
         </div>
 
         <!-- 3.3. Advanced Filter -->
         <div class="d-flex justify-content-between align-items-center mb-4" id="filterContainer" style="display: none;">
             <div class="dropdown" id="filterDropdownContainer">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown"
+                <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="filterDropdown"
                     data-bs-toggle="dropdown" aria-expanded="false" aria-controls="filterDropdown">
                     Filtros
                 </button>
@@ -39,11 +40,11 @@
                     <li><a class="dropdown-item" href="#">Por Nome</a></li>
                 </ul>
             </div>
-            <button class="btn btn-primary" id="applyFilters">Aplicar Filtros</button>
+            <button class="btn btn-primary btn-lg" id="applyFilters">Aplicar Filtros</button>
         </div>
 
         <!-- 3.4. Pagination -->
-        <nav aria-label="Navegação de página">
+        {{-- <nav aria-label="Navegação de página">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
@@ -55,14 +56,14 @@
                     <a class="page-link" href="#">Próximo</a>
                 </li>
             </ul>
-        </nav>
+        </nav> --}}
 
 
 
 
         <!-- 4.1. Articles Section -->
         <section class="articles py-5" id="artigos">
-            <h1 class="main-artigos main-artigos__text text-black">Artigos em Destaque</h1>
+            <h2 class="main-artigos main-artigos__text text-black">Artigos em Destaque</h2>
             <div class="cards-area">
                 @forelse ($publications as $key => $publication)
                     <x-index-card class="card-principal" :index="$key + 1" :title="$publication['title']" :resume="$publication['resume']"
@@ -87,7 +88,7 @@
 
 <!-- 4.2. Games Section -->
 <section class="games py-5" id="jogos">
-    <h1 class="main-artigos main-artigos__text text-primary">Jogos</h1>
+    <h2 class="main-artigos main-artigos__text text-black">Jogos</h2>
     <div class="cards-area">
         @forelse ($games as $key => $game)
             <x-index-card 
@@ -109,7 +110,7 @@
 
         <!-- 4.3. Events Section -->
         <section class="events py-5" id="eventos">
-            <h1 class="main-artigos main-artigos__text text-primary">Eventos</h1>
+            <h2 class="main-artigos main-artigos__text text-black">Eventos</h2>
             <div class="cards-area">
                 @forelse ($events as $key => $event)
                     <x-index-card class="card-principal" :index="$key + 1" :title="$event['title']" :resume="$event['resume']"
@@ -136,7 +137,7 @@
 
         <!-- 4.4. Other Publications Section -->
         <section class="others py-5" id="outros">
-            <h1 class="main-artigos main-artigos__text text-primary">Outros</h1>
+            <h2 class="main-artigos main-artigos__text text-black">Outros</h2>
             <div class="cards-area">
                 @forelse ($others as $key => $other)
                     <x-index-card class="card-principal" :index="$key + 1" :title="$other['title']" :resume="$other['resume']"

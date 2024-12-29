@@ -100,16 +100,23 @@ body, html {
 .options {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Alinha o conteúdo verticalmente no centro */
     margin-bottom: 20px;
     font-size: 14px;
 }
 
 .remember-me {
     display: flex;
-    align-items: center;
-    gap: 5px;
+    align-items: center; /* Garante alinhamento vertical do checkbox com o texto */
+    gap: 1px;
     color: #444;
     font-size: 14px;
+    line-height: 1; /* Remove espaçamento extra entre linhas */
+}
+
+.remember-me input {
+    margin: 0; /* Remove margens do checkbox */
+    vertical-align: middle; /* Alinha o checkbox verticalmente ao texto */
 }
 
 .options .forgot-password {
