@@ -201,7 +201,8 @@
     </div>
   </main>
 
-  <script src="../../js/dashboard.js"></script>
+  <script {{ asset('/public/js/dashboard.js') }}></script>
+  
 </body>
 
 </html>
