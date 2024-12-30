@@ -8,12 +8,22 @@ use Illuminate\View\Component;
 
 class PesquisadorCard extends Component
 {
+    public $name;
+    public $image;
+    public $bio;
+    public $link;
+    public $direction;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($name, $image, $bio, $link, $direction = 'start')
     {
-        //
+        $this->name = $name;
+        $this->image = $image;
+        $this->bio = $bio;
+        $this->link = $link;
+        $this->direction = $direction;
     }
 
     /**

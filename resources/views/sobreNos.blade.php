@@ -102,18 +102,30 @@
         </div>
     </section>
 
-    <!-- 4. Equipe de Pesquisadores -->
-    <section class="equipe-pesquisadores mt-5 container">
-        <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
-        <div class="row g-4">
-            @foreach ($pesquisadores as $pesquisador)
-                <div class="col-md-4">
-                    <x-pesquisador-card :name="$pesquisador['name']" :image="$pesquisador['image']" :bio="$pesquisador['area_of_expertise']" :direction="$pesquisador['direction']"
-                        :link="$pesquisador['link']" />
+<!-- 4. Equipe de Pesquisadores -->
+
+
+
+<section class="equipe-pesquisadores mt-5 container">
+    <h2 class="section-title text-primary text-center mb-5">Equipe de Pesquisadores</h2>
+    <div class="row g-4">
+        @foreach ($pesquisadores as $pesquisador)
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-lg border-0">
+                    <img src="{{ asset($pesquisador->image) }}" alt="{{ $pesquisador->name }}" class="card-img-top rounded-circle p-3" style="object-fit: cover; width: 150px; height: 150px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $pesquisador->name }}</h5>
+                        <p class="card-text">{{ $pesquisador->area_of_expertise }}</p>
+                        <a href="{{ $pesquisador->link }}" class="btn btn-primary btn-sm" target="_blank">Saiba mais</a>
+                    </div>
                 </div>
-            @endforeach
-        </div>
-    </section>
+            </div>
+        @endforeach
+    </div>
+</section>
+
+
+
 
     <!-- 5. Áreas de Atuação -->
     <section class="areas-atuacao mt-5 py-5">

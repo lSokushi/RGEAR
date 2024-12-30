@@ -34,10 +34,13 @@ class SearchController extends Controller
                 case 'nome':
                     $publicacoes->orderBy('titulo', 'asc');
                     break;
+                default:
+                    // Caso nenhum filtro válido seja fornecido
+                    break;
             }
         }
 
-        // Retorna os resultados em formato JSON
-        return response()->json($publicacoes->get());
+        // Retorna os resultados paginados em formato JSON
+        return response()->json($publicacoes->paginate(10));
     }
 }

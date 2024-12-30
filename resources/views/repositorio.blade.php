@@ -15,28 +15,32 @@
         </div>
 
         <!-- Barra de Busca com Filtro -->
+
         <!-- Barra de Busca com Filtro -->
         <div class="mb-4">
-            <label for="searchBar" class="form-label">Pesquise aqui:</label>
-            <div class="input-group">
-                <span class="input-group-text" id="search-icon">
-                    <i class="fa fa-search"></i>
+            <label for="searchBar" class="form-label fs-5 fw-semibold">Pesquise aqui:</label>
+            <div class="input-group shadow-sm">
+                <span class="input-group-text bg-primary text-white" id="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 <input type="text" id="searchBar" class="form-control form-control-lg"
-                    placeholder="Digite sua busca por publicações, linhas de pesquisa ou temas..."
-                    aria-label="Barra de pesquisa" aria-describedby="search-icon">
-                <button class="btn btn-outline-secondary btn-lg" id="clearSearch">Limpar</button>
+                    placeholder="Busque publicações, linhas de pesquisa ou temas..." aria-label="Barra de pesquisa"
+                    aria-describedby="search-icon">
+                <button class="btn btn-outline-danger btn-lg d-flex align-items-center gap-1" id="clearSearch">
+                    <i class="fa-solid fa-xmark"></i> Limpar
+                </button>
             </div>
         </div>
 
         <!-- Filtros Avançados -->
-        <div class="d-flex justify-content-between align-items-center mb-4" id="filterContainer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3" id="filterContainer">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="filterDropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Filtros
+                <button
+                    class="btn btn-outline-secondary dropdown-toggle btn-lg shadow-sm d-flex align-items-center gap-2"
+                    type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-sliders"></i> Filtros
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
                     <li><a class="dropdown-item" href="#" data-filter="data">Por Data</a></li>
                     <li><a class="dropdown-item" href="#" data-filter="relevancia">Por Relevância</a></li>
                     <li><a class="dropdown-item" href="#" data-filter="nome">Por Nome</a></li>
@@ -48,19 +52,61 @@
                             Artificial Aplicada</a></li>
                 </ul>
             </div>
-            <button class="btn btn-primary btn-lg" id="applyFilters">Aplicar Filtros</button>
+            <button class="btn btn-primary btn-lg shadow-sm d-flex align-items-center gap-2" id="applyFilters">
+                <i class="fa-solid fa-check"></i> Aplicar Filtros
+            </button>
         </div>
 
-        <!-- Contêiner de Resultados -->
-        <div id="resultContainer" class="mt-4">
-            <!-- Resultados da busca serão exibidos aqui -->
+
+
+
+
+        <!-- Resultados -->
+        <div class="card p-4 mt-4 shadow-sm">
+            <h6>Resultado 1-10 de 69308</h6>
+            <table class="table table-striped table-bordered mt-3">
+                <thead class="table-light">
+                    <tr>
+                        <th>Data do documento</th>
+                        <th>Título</th>
+                        <th>Autor(es)</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                    <tr>
+                        <td>12-Dec-2012</td>
+                        <td>Nos caminhos do sagrado...</td>
+                        <td>Soraya Aparecida Alvares Coppola</td>
+                        <td>Tese de Doutorado</td>
+                    </tr>
+                    <tr>
+                        <td>19-Nov-2015</td>
+                        <td>Um lugar: muitas histórias...</td>
+                        <td>Shirley Patricia Nogueira...</td>
+                        <td>Tese de Doutorado</td>
+                    </tr>
+                    <!-- Mais resultados serão adicionados dinamicamente -->
+                </tbody>
+            </table>
         </div>
+
         <!-- Paginação -->
-        <nav aria-label="Navegação de página">
+        <nav class="mt-4">
             <ul class="pagination justify-content-center" id="paginationContainer">
-                <!-- Os botões de paginação serão renderizados aqui -->
+                <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
             </ul>
         </nav>
+        </div>
+
+
+
+
+
 
 
 
